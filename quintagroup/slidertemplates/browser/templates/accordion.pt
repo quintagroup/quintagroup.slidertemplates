@@ -1,0 +1,91 @@
+<dl class="portlet portletCollection"
+     i18n:domain="plone"
+     tal:define="collection_url view/collection_url;
+                 toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
+ 
+         
+    <tal:newsitems>
+    	<dt class="portletHeader">
+	        <a tal:attributes="href collection_url" tal:omit-tag="not:view/data/show_more">
+	            <span tal:content="view/data/header" />
+	        </a>
+     	</dt>
+          <div id="accordion1">
+            <ul>  
+              <li tal:repeat="obj view/results">
+                <h1>Hola</h1>
+                <div >
+                    <dd class="portletItem"
+                    tal:define="oddrow repeat/obj/odd;
+                                item obj/getObject;"
+                    tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
+                    <a  href="#"
+                        class="tile"
+                        tal:attributes="href obj/getURL" >
+                     <span class="portletItemDetails"
+                          tal:condition="view/data/show_dates"
+                          tal:content="python:toLocalizedTime(obj.Date)">
+
+                        Date
+                    </span>
+                    <p  id="description"
+                        tal:attributes="title obj/Description">
+                      <span  class="eventItemData"
+                              tal:condition="view/data/show_dates">
+                      <span tal:content="python:toLocalizedTime(obj.start, long_format=True)">
+                      Start
+                      </span>
+                      <span tal:content="python:toLocalizedTime(obj.end, long_format=True)">
+                      End
+                      </span>
+                      </span>
+                      <span tal:replace="obj/Title|obj/getId|obj/id">
+                      Title
+                      </span>
+                    </p>
+
+                    <img
+                      tal:define="scales item/@@images"
+                         tal:replace="structure python: scales.tag('image' )" />
+                    
+                    <p  tal:define="convertTo nocall:context/portal_transforms/convertTo;
+                                  cropText nocall:context/@@plone/cropText;
+                                  text item/getText;
+                                  plaintext python:convertTo('text/plain', text).getData();
+                                  croppedtext python:cropText(plaintext, 350, '...');" 
+                        tal:content="croppedtext" />
+
+                    <a  id="more"
+                        tal:attributes="href collection_url"
+                        tal:content="structure view/show_more_label">
+                         More&hellip;
+                         </a>
+                    </a>     
+                </dd>
+                </div>
+              </li>      
+            </ul>
+          </div>
+      </tal:newsitems>
+ 
+      <script>    
+        $("#accordion1").awsAccordion({
+          type:"horizontal",
+          cssAttrsHor:{
+              ulWidth:"responsive",
+              liHeight:350,
+              liWidth:50
+          },
+          startSlide:2,
+          openCloseHelper:{
+              openIcon:"plus",
+              closeIcon:"minus"
+          },
+          openOnebyOne:true,
+          classTab:"small",
+          slideOn:"click",
+          autoPlay:true,
+          autoPlaySpeed:5000
+        })
+      </script>
+</dl>

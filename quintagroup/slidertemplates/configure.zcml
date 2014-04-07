@@ -1,0 +1,36 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="quintagroup.slidertemplates">
+
+  <five:registerPackage package="." initialize=".initialize" />
+  <include package=".browser" />
+
+  <genericsetup:importStep
+      name="quintagroup.slidertemplates.initialsetup"
+      title="migrate content from AT to DX"
+      description=""
+      handler=".setuphandlers.initialsetup"
+      />
+  <genericsetup:registerProfile
+      name="initialsetup"
+      title="quintagroup.slidertemplates initialsetup (run-once)"
+      directory="profiles/initialsetup"
+      description="Installs the quintagroup.slidertemplates package"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+  <genericsetup:registerProfile
+      name="default"
+      title="quintagroup.slidertemplates default"
+      directory="profiles/default"
+      description="Installs the quintagroup.slidertemplates package"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+  
+  <!-- -*- extra stuff goes here -*- -->
+
+</configure>
