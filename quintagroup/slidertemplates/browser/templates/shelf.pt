@@ -2,15 +2,16 @@
  <dl class="portlet portletCollection"
      i18n:domain="plone"
      tal:define="collection_url view/collection_url;
+                 header view/data/header;
                  toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
  
      <dt class="portletHeader">
          <a tal:attributes="href collection_url" tal:omit-tag="not:view/data/show_more">
-            <span tal:content="view/data/header" />
+            <span tal:content="header" />
         </a>
      </dt>    
     <tal:newsitems>
-          <div id="owl-example" class="owl-carousel owl-theme ">
+          <div id="owl-example" tal:attributes="id header"  class="owl-carousel owl-theme ">
            
             <div class="item" tal:repeat="obj view/results">
                 <dd class="portletItem"
@@ -49,10 +50,10 @@
           </div>
      </tal:newsitems>
  
-      <script>
+     <tal:x replace="structure string:&lt;script type='text/javascript'&gt;"></tal:x>
+        $(document).ready(function() {
 
-        $(document).ready(function($) {
-          $("#owl-example").owlCarousel({
+        $("#<tal:x replace="header"></tal:x>").owlCarousel({
             itemsDesktop : [1199,3],
             itemsCustom : false,
             items : 3,
@@ -63,5 +64,5 @@
 
         $("body").data("page", "frontpage");
 
-      </script>
+      <tal:x replace="structure string: &lt;/script&gt;" ></tal:x>
  </dl>

@@ -1,16 +1,17 @@
 <dl class="portlet portletCollection"
      i18n:domain="plone"
      tal:define="collection_url view/collection_url;
-                 toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
+                 toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                 header view/data/header;">
  
          
     <tal:newsitems>
     	<dt class="portletHeader">
 	        <a tal:attributes="href collection_url" tal:omit-tag="not:view/data/show_more">
-	            <span tal:content="view/data/header" />
+	            <span tal:content="header" />
 	        </a>
      	</dt>
-          <div id="verticalTab">
+          <div id="verticalTab" tal:attributes="id header">
             <ul class="resp-tabs-list">  
               <li tal:repeat="obj view/results">
                   <p  id="description"
@@ -71,9 +72,10 @@
           </div>
       </tal:newsitems>
  
-      <script type="text/javascript">
-          $(document).ready(function () {
-              $('#horizontalTab').easyResponsiveTabs({
+      <tal:x replace="structure string:&lt;script type='text/javascript'&gt;"></tal:x>
+        $(document).ready(function() {
+
+        $("#<tal:x replace="header"></tal:x>").easyResponsiveTabs({
                   type: 'default', //Types: default, vertical, accordion           
                   width: 'auto', //auto or any width like 600px
                   fit: true,   // 100% fit in a container
@@ -95,5 +97,7 @@
                   fit: true
               });
           });
-      </script>
+      <tal:x replace="structure string: &lt;/script&gt;" ></tal:x>
+
+ 
 </dl>

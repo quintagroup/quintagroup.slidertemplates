@@ -1,16 +1,17 @@
 <dl class="portlet portletCollection"
      i18n:domain="plone"
      tal:define="collection_url view/collection_url;
-                 toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
+                 toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                 header view/data/header;">
  
          
     <tal:newsitems>
     	<dt class="portletHeader">
 	        <a tal:attributes="href collection_url" tal:omit-tag="not:view/data/show_more">
-	            <span tal:content="view/data/header" />
+	            <span tal:content="header" />
 	        </a>
      	</dt>
-          <div id="accordion1">
+          <div id="accordion1" tal:attributes="id header">
             <ul>  
               <li tal:repeat="obj view/results">
                 <h1>Hola</h1>
@@ -68,8 +69,8 @@
           </div>
       </tal:newsitems>
  
-      <script>    
-        $("#accordion1").awsAccordion({
+      <tal:x replace="structure string:&lt;script type='text/javascript'&gt;"></tal:x>    
+         $("#<tal:x replace="header"></tal:x>").awsAccordion({
           type:"horizontal",
           cssAttrsHor:{
               ulWidth:"responsive",
@@ -87,5 +88,6 @@
           autoPlay:true,
           autoPlaySpeed:5000
         })
-      </script>
+      <tal:x replace="structure string: &lt;/script&gt;" ></tal:x>
+
 </dl>
