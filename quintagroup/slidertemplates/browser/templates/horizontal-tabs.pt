@@ -5,7 +5,6 @@
                  header view/data/header;">
  
          
-    <tal:newsitems>
     	<dt class="portletHeader">
 	        <a tal:attributes="href collection_url" tal:omit-tag="not:view/data/show_more">
 	            <span tal:content="header" />
@@ -13,64 +12,38 @@
      	</dt>
           <div id="verticalTab" tal:attributes="id header">
             <ul class="resp-tabs-list">  
-              <li tal:repeat="obj view/results">
-                  <p  id="description"
-                        tal:attributes="title obj/Description">
-                      <span  class="eventItemData"
-                              tal:condition="view/data/show_dates">
-                      <span tal:content="python:toLocalizedTime(obj.start, long_format=True)">
-                      Start
-                      </span>
-                      <span tal:content="python:toLocalizedTime(obj.end, long_format=True)">
-                      End
-                      </span>
-                      </span>
-                      <span tal:replace="obj/Title|obj/getId|obj/id">
-                      Title
-                      </span>
-                    </p>
-               
+              <li tal:repeat="item view/results">
+                <p tal:content="item/Title" />
+                <span class="eventItemData"
+                      tal:condition="view/data/show_dates">
+                  <span tal:content="python:toLocalizedTime(item.start, long_format=True)"> Start </span>
+                  <span tal:content="python:toLocalizedTime(item.end, long_format=True)"> End </span>
+                </span>               
               </li>      
             </ul>
             <div class="resp-tabs-container">
-               <div tal:repeat="obj view/results">
+               <div tal:repeat="item view/results">
                     <dd class="portletItem"
-                    tal:define="oddrow repeat/obj/odd;
-                                item obj/getObject;"
-                    tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
+                    tal:define="obj item/getObject;">
                     <a  href="#"
                         class="tile"
-                        tal:attributes="href obj/getURL" >
+                        tal:attributes="href item/getURL" >
                      <span class="portletItemDetails"
                           tal:condition="view/data/show_dates"
-                          tal:content="python:toLocalizedTime(obj.Date)">
-
+                          tal:content="python:toLocalizedTime(item.Date)">
                         Date
                     </span>
-                  
-
-                    <img
-                      tal:define="scales item/@@images"
-                         tal:replace="structure python: scales.tag('image' )" />
-                    
-                    <p  tal:define="convertTo nocall:context/portal_transforms/convertTo;
-                                  cropText nocall:context/@@plone/cropText;
-                                  text item/getText;
-                                  plaintext python:convertTo('text/plain', text).getData();
-                                  croppedtext python:cropText(plaintext, 350, '...');" 
-                        tal:content="croppedtext" />
-
-                    <a  id="more"
-                        tal:attributes="href collection_url"
-                        tal:content="structure view/show_more_label">
-                         More&hellip;
-                         </a>
+                    <div tal:omit-tag="" tal:condition="obj/image|nothing">
+                      <img tal:define="scales obj/@@images"
+                           tal:replace="structure python: scales.tag('image')" />
+                    </div>
+                    <p tal:content="item/Description" />
                     </a>     
                 </dd>
                 </div>
             </div>
           </div>
-      </tal:newsitems>
+
  
       <tal:x replace="structure string:&lt;script type='text/javascript'&gt;"></tal:x>
         $(document).ready(function() {

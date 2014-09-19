@@ -14,28 +14,20 @@
         </a>
          <span class="portletTopRight"></span>
      </dt>    
-    <tal:events tal:repeat="obj view/results">
+    <tal:events tal:repeat="item view/results">
          <dd class="portletItem"
-         tal:define="oddrow repeat/obj/odd;"
+         tal:define="oddrow repeat/item/odd;"
          tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
-         <a href="#"
-           class="tile"
-            tal:attributes="href obj/getURL;
-                            title obj/Description">
-             <span class="eventItemData"
-                   tal:condition="view/data/show_dates">
-               <span tal:content="python:toLocalizedTime(obj.start, long_format=True)">
-                 Start
+         <a class="tile"
+            tal:attributes="href item/getURL;
+                            title item/Description">
+              <span  class="eventItemData"
+                     tal:condition="view/data/show_dates">
+                <span tal:content="python:toLocalizedTime(item.start, long_format=True)"> Start </span>
+                <span tal:content="python:toLocalizedTime(item.end, long_format=True)"> End </span>
               </span>
-             &ndash;
-               <span tal:content="python:toLocalizedTime(obj.end, long_format=True)">
-                 End
-               </span>
-             </span>
              &nbsp;
-             <span tal:replace="obj/Title|obj/getId|obj/id">
-              Title
-             </span>
+             <span tal:replace="item/Title|item/getId|item/id"> Title </span>
          </a>
      </dd>
      </tal:events>
