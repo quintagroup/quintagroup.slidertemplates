@@ -4,7 +4,5 @@
 <javascript cacheable="True" compression="safe" cookable="True"
   enabled="True" expression="" id="++resource++owl.carousel.js" inline="False"/>
 <javascript cacheable="True" compression="safe" cookable="True"
-  enabled="True" expression="" id="++resource++accordion-min.js" inline="False"/>
-<javascript cacheable="True" compression="safe" cookable="True"
   enabled="True" expression="" id="++resource++tabs.js" inline="False"/>
 </object>

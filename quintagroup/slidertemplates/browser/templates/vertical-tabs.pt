@@ -1,97 +1,57 @@
 <dl class="portlet portletCollection"
      i18n:domain="plone"
      tal:define="collection_url view/collection_url;
-                 header view/data/header;
-                 toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
+                 toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                 header view/data/header;">
  
          
-    <tal:newsitems>
-    	<dt class="portletHeader">
-	        <a tal:attributes="href collection_url" tal:omit-tag="not:view/data/show_more">
-	            <span tal:content="header" />
-	        </a>
-     	</dt>
-          <div id="horizontalTab" tal:attributes="id header">
-            <ul class="resp-tabs-list">  
-              <li tal:repeat="obj view/results">
-                  <p  id="description"
-                        tal:attributes="title obj/Description">
-                      <span  class="eventItemData"
-                              tal:condition="view/data/show_dates">
-                      <span tal:content="python:toLocalizedTime(obj.start, long_format=True)">
-                      Start
-                      </span>
-                      <span tal:content="python:toLocalizedTime(obj.end, long_format=True)">
-                      End
-                      </span>
-                      </span>
-                      <span tal:replace="obj/Title|obj/getId|obj/id">
-                      Title
-                      </span>
-                    </p>
-               
-              </li>      
-            </ul>
-            <div class="resp-tabs-container">
-               <div tal:repeat="obj view/results">
-                    <dd class="portletItem"
+      <dt class="portletHeader">
+          <a tal:attributes="href collection_url" tal:omit-tag="not:view/data/show_more">
+              <span tal:content="header" />
+          </a>
+      </dt>
+      <div id="verticalTab" class="tabContainer" tal:attributes="id header">
+        <ul class="resp-tabs-list">  
+          <li tal:repeat="obj view/results">
+            <p tal:content="python: obj.Title or obj.id" />           
+          </li>      
+        </ul>
+        <div class="resp-tabs-container">
+           <div tal:repeat="obj view/results">
+                <dd class="portletItem"
                     tal:define="oddrow repeat/obj/odd;
-                                item obj/getObject;"
-                    tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
-                    <a  href="#"
-                        class="tile"
-                        tal:attributes="href obj/getURL" >
-                     <span class="portletItemDetails"
-                          tal:condition="view/data/show_dates"
-                          tal:content="python:toLocalizedTime(obj.Date)">
-
-                        Date
-                    </span>
-                  
-
-                    <img
-                      tal:define="scales item/@@images"
-                         tal:replace="structure python: scales.tag('image' )" />
-                    
-                    <p  tal:define="convertTo nocall:context/portal_transforms/convertTo;
-                                  cropText nocall:context/@@plone/cropText;
-                                  text item/getText;
-                                  plaintext python:convertTo('text/plain', text).getData();
-                                  croppedtext python:cropText(plaintext, 350, '...');" 
-                        tal:content="croppedtext" />
-
-                    <a  id="more"
-                        tal:attributes="href collection_url"
-                        tal:content="structure view/show_more_label">
-                         More&hellip;
-                         </a>
-                    </a>     
-                </dd>
+                                item obj/getObject;
+                                item_description item/Description;">
+                <a  href="#"
+                    class="tile"
+                    tal:attributes="href obj/getURL" >
+<!--                 <span class="eventItemData"
+                      tal:condition="view/data/show_dates">
+                  <span tal:content="python:toLocalizedTime(obj.start, long_format=True)"> Start </span>
+                  <span tal:content="python:toLocalizedTime(obj.end, long_format=True)"> End </span>
+                </span>  -->   
+                <span class="portletItemDetails"
+                      tal:condition="view/data/show_dates"
+                      tal:content="python:toLocalizedTime(obj.Date)">
+                    Date
+                </span>
+                <div tal:omit-tag="" tal:condition="item/image|nothing">
+                  <img tal:define="scales item/@@images"
+                       tal:replace="structure python: scales.tag('image')" />
                 </div>
+                <p class="documentDescription" tal:content="obj/Description" />
+                <p tal:condition="exists:item/getText" tal:content="structure item/getText" />
+                </a>     
+            </dd>
             </div>
-          </div>
-      </tal:newsitems>
+        </div>
+      </div>
+
  
       <tal:x replace="structure string:&lt;script type='text/javascript'&gt;"></tal:x>
         $(document).ready(function() {
 
         $("#<tal:x replace="header"></tal:x>").easyResponsiveTabs({
-                  type: 'default', //Types: default, vertical, accordion           
-                  width: 'auto', //auto or any width like 600px
-                  fit: true,   // 100% fit in a container
-                  closed: 'accordion', // Start closed if in accordion view
-                  activate: function(event) { // Callback function if tab is switched
-                      var $tab = $(this);
-                      var $info = $('#tabInfo');
-                      var $name = $('span', $info);
-
-                      $name.text($tab.text());
-
-                      $info.show();
-                  }
-              });
-
-              $('#verticalTab').easyResponsiveTabs({
                   type: 'vertical',
                   width: 'auto',
                   fit: true

@@ -10,50 +10,48 @@
 	            <span tal:content="header" />
 	        </a>
      	</dt>
-          <div id="verticalTab" tal:attributes="id header">
-            <ul class="resp-tabs-list">  
-              <li tal:repeat="item view/results">
-                <p tal:content="item/Title" />
-                <span class="eventItemData"
-                      tal:condition="view/data/show_dates">
-                  <span tal:content="python:toLocalizedTime(item.start, long_format=True)"> Start </span>
-                  <span tal:content="python:toLocalizedTime(item.end, long_format=True)"> End </span>
-                </span>               
-              </li>      
-            </ul>
-            <div class="resp-tabs-container">
-               <div tal:repeat="item view/results">
-                    <dd class="portletItem"
-                    tal:define="obj item/getObject;">
-                    <a  href="#"
-                        class="tile"
-                        tal:attributes="href item/getURL" >
-                     <span class="portletItemDetails"
-                          tal:condition="view/data/show_dates"
-                          tal:content="python:toLocalizedTime(item.Date)">
-                        Date
-                    </span>
-                    <div tal:omit-tag="" tal:condition="obj/image|nothing">
-                      <img tal:define="scales obj/@@images"
-                           tal:replace="structure python: scales.tag('image')" />
-                    </div>
-                    <p tal:content="item/Description" />
-                    </a>     
-                </dd>
+      <div id="verticalTab" class="tabContainer" tal:attributes="id header">
+        <ul class="resp-tabs-list">  
+          <li tal:repeat="obj view/results">
+            <p tal:content="python: obj.Title or obj.id" />           
+          </li>      
+        </ul>
+        <div class="resp-tabs-container">
+          <div tal:repeat="obj view/results">
+            <dd class="portletItem"
+                tal:define="oddrow repeat/obj/odd;
+                            item obj/getObject;
+                            item_description item/Description;">
+                <a  href="#"
+                    class="tile"
+                    tal:attributes="href obj/getURL" >
+                <span class="portletItemDetails"
+                      tal:condition="view/data/show_dates"
+                      tal:content="python:toLocalizedTime(obj.Date)">
+                    Date
+                </span>
+                <div tal:omit-tag="" tal:condition="item/image|nothing">
+                  <img tal:define="scales item/@@images"
+                       tal:replace="structure python: scales.tag('image')" />
                 </div>
-            </div>
+                <p class="documentDescription" tal:content="obj/Description" />
+                <p tal:condition="exists:item/getText" tal:content="structure item/getText" />
+                </a>     
+            </dd>
           </div>
+        </div>
+      </div>
 
  
       <tal:x replace="structure string:&lt;script type='text/javascript'&gt;"></tal:x>
         $(document).ready(function() {
 
         $("#<tal:x replace="header"></tal:x>").easyResponsiveTabs({
-                  type: 'default', //Types: default, vertical, accordion           
-                  width: 'auto', //auto or any width like 600px
-                  fit: true,   // 100% fit in a container
-                  closed: 'accordion', // Start closed if in accordion view
-                  activate: function(event) { // Callback function if tab is switched
+                  type: 'default',       
+                  width: 'auto',
+                  fit: true, 
+                  closed: 'accordion',
+                  activate: function(event) {
                       var $tab = $(this);
                       var $info = $('#tabInfo');
                       var $name = $('span', $info);
@@ -62,12 +60,6 @@
 
                       $info.show();
                   }
-              });
-
-              $('#verticalTab').easyResponsiveTabs({
-                  type: 'vertical',
-                  width: 'auto',
-                  fit: true
               });
           });
       <tal:x replace="structure string: &lt;/script&gt;" ></tal:x>

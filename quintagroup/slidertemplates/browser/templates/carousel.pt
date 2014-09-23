@@ -1,5 +1,4 @@
-
- <dl class="portlet portletCollection"
+<dl class="portlet portletCollection"
      i18n:domain="plone"
      tal:define="collection_url view/collection_url;
                  header view/data/header;
@@ -10,24 +9,26 @@
             <span tal:content="header" />
         </a>
      </dt>    
-      <div id="owl-demo" tal:attributes="id header" class="owl-carousel owl-theme " >
-        <div class="item" tal:repeat="item view/results">
-            <dd class="portletItem">
-                <a class="tile"
-                   tal:attributes="href item/getURL" >
-                <h3 tal:replace="item/Title|item/getId|item/id"> Title </h3>
-                <p tal:content="item/Description" />
-                <span class="eventItemData"
-                      tal:condition="view/data/show_dates">
-                  <span tal:content="python:toLocalizedTime(item.start, long_format=True)"> Start </span>
-                  <span tal:content="python:toLocalizedTime(item.end, long_format=True)"> End </span>
+    <div id="owl-demo" tal:attributes="id header" class="owl-carousel owl-theme " >
+      <div class="item" tal:repeat="obj view/results">
+          <dd class="portletItem"
+              tal:define="oddrow repeat/obj/odd;
+                          item obj/getObject;
+                          item_description item/Description;">
+              <a  href="#"
+                  class="tile"
+                  tal:attributes="href obj/getURL" >
+                <span class="portletItemDetails"
+                      tal:condition="view/data/show_dates"
+                      tal:content="python:toLocalizedTime(obj.Date)">
+                    Date
                 </span>
-                <div tal:omit-tag=""
-                     tal:define="obj item/getObject;
-                                 scales obj/@@images"
-                     tal:condition="obj/image|nothing">
-                <img tal:replace="structure python: scales.tag('image' )" /></div>
-                </a>     
+                <div tal:omit-tag="" tal:condition="item/image|nothing">
+                  <img tal:define="scales item/@@images"
+                       tal:replace="structure python: scales.tag('image')" />
+                </div>
+                <p class="documentDescription" tal:content="obj/Description" />
+              </a>     
             </dd>
         </div>
       </div>
