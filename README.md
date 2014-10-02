@@ -1,4 +1,4 @@
-ntagroup.slidertemplates
+Quintagroup.slidertemplates
 ===========================
 Enhanced Responsive Views for NG Collection Portlet (Carousel, Shelf, Tabs)
 
