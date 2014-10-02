@@ -11,11 +11,12 @@ The product can be used to add new responsive views for NG Collection Portlet. q
 Usage
 -----
 quintagroup.slidertemplates is simple in usage, just follow the steps:
-* Go to /@@manage-portlets link on the desired page.
-* Choose NG Collection Portlet from the ×.Add portlet...×. drop-down menu.
-* Add any previously created collection.
-* Choose one of the offered templates: carousel, shelf, vertical or horizontal tabs.
-* Save portlet.
+
+ * Go to /@@manage-portlets link on the desired page.
+ * Choose NG Collection Portlet from the ×.Add portlet...×. drop-down menu.
+ * Add any previously created collection.
+ * Choose one of the offered templates: carousel, shelf, vertical or horizontal tabs.
+ * Save portlet.
 
 Supported Plone versions:
 -------------------------
