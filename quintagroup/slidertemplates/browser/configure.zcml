@@ -22,6 +22,10 @@
     name="tabs.js"
     file="resources/tabs.js"
     />
+  <browser:resource
+    name="heightFix.js"
+    file="resources/heightFix.js"
+    />
 
 
   <configure zcml:condition="installed collective.portlet.ngcollection">

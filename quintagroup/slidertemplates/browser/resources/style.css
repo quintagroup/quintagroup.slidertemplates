@@ -21,15 +21,33 @@
 .portletItem .tile {
     color: #666;
     }
-.portletItem .documentDescription {
-    color: #666;
+.portletItem .documentDescription,
+#content .panels .documentDescription {
+    color: rgb(0, 0, 0);
     margin-left: 0;
-    font: bold 1.25em "Helvetica Neue", Arial, FreeSans, sans-serif;
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
     margin: 5px 0 !important;
+    font-weight: normal;
     }
-
+#portal-globalnav.megamenu li a {
+    background: none;
+    }
+#portal-globalnav ul li a {
+    border-top: 0;
+    }
 /********Tabs_styles*********/
 
+
+#portal-globalnav li ul.resp-tabs-list,
+#theme-globalnav li ul.resp-tabs-list {
+    position: relative;
+    display: block;
+    }
+#portal-globalnav ul.resp-tabs-list li a,
+#theme-globalnav ul.resp-tabs-list li a {
+    width: 100%;
+    }
 .tabContainer {
     float: left;
     padding: 5px 0;
@@ -124,7 +142,7 @@ h2.resp-tab-title:last-child {
     border: 1px solid #c1c1c1;
     float: left;
     width: 68%;
-    min-height: 330px;
+    min-height:100px;
     border-radius: 4px;
     clear: none;
     }
@@ -207,6 +225,14 @@ h2.resp-accordion {
     }
 .resp-vtabs .resp-tab-content:last-child {
     border-bottom: 1px solid #c1c1c1 !important;
+    }
+#portal-globalnav li ul.resp-tabs-list, 
+#theme-globalnav li ul.resp-tabs-list {
+    display: none;
+    }
+.resp-accordion > p,
+dl.portlet .resp-accordion p  {
+    margin: 0;
     }
 }
 
@@ -312,9 +338,9 @@ h2.resp-accordion {
 	}
 .owl-theme .owl-controls .owl-page span{
     display: block;
-    width: 12px;
-    height: 12px;
-    margin: 5px 7px;
+    width: 8px;
+    height: 8px;
+    margin: 5px;
     filter: Alpha(Opacity=50);/*IE7 fix*/
     opacity: 0.5;
     -webkit-border-radius: 20px;
