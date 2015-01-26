@@ -2,12 +2,12 @@
      i18n:domain="plone"
      tal:define="collection_url view/collection_url;
                  toLocalizedTime nocall:context/@@plone/toLocalizedTime;
-                 header view/data/header;">
+                 headerfull view/data/header; 
+                 header python:headerfull.replace(' ', '');">
  
-         
       <dt class="portletHeader">
           <a tal:attributes="href collection_url" tal:omit-tag="not:view/data/show_more">
-              <span tal:content="header" />
+              <span tal:content="headerfull" />
           </a>
       </dt>
       <div id="owl-demo" tal:attributes="id header" class="owl-carousel owl-theme " >

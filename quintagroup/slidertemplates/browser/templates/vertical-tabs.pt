@@ -2,18 +2,22 @@
      i18n:domain="plone"
      tal:define="collection_url view/collection_url;
                  toLocalizedTime nocall:context/@@plone/toLocalizedTime;
-                 header view/data/header;">
+                 headerfull view/data/header; 
+                 header python:headerfull.replace(' ', '');">
  
-         
       <dt class="portletHeader">
           <a tal:attributes="href collection_url" tal:omit-tag="not:view/data/show_more">
-              <span tal:content="header" />
+              <span tal:content="headerfull" />
           </a>
       </dt>
       <div id="verticalTab" class="tabContainer" tal:attributes="id header">
         <ul class="resp-tabs-list">  
           <li tal:repeat="item view/results">
-            <p tal:content="python: item.Title or item.id" />           
+            <span class="portletItemTitle"
+                  tal:define="myObj python:item.getObject();"
+                  tal:content="structure myObj/pretty_title_or_id">
+                Title
+            </span>             
           </li>      
         </ul>
         <div class="resp-tabs-container">
@@ -38,7 +42,6 @@
         </div>
       </div>
 
- 
       <tal:x replace="structure string:&lt;script type='text/javascript'&gt;"></tal:x>
         $(document).ready(function() {
 

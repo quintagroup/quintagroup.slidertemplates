@@ -26,7 +26,14 @@
     name="heightFix.js"
     file="resources/heightFix.js"
     />
-
+  <browser:resource
+    name="qgCarousel.js"
+    file="resources/qgCarousel.js"
+    />
+  <browser:resource
+    name="circleSlider.js"
+    file="resources/circleSlider.js"
+    />
 
   <configure zcml:condition="installed collective.portlet.ngcollection">
   <include package="collective.portlet.ngcollection" file="meta.zcml" />

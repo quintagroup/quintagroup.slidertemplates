@@ -1,12 +1,13 @@
 <dl class="portlet portletCollection"
      i18n:domain="plone"
      tal:define="collection_url view/collection_url;
-                 header view/data/header;
+                 headerfull view/data/header; 
+                 header python:headerfull.replace(' ', '');
                  toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
  
      <dt class="portletHeader">
          <a tal:attributes="href collection_url" tal:omit-tag="not:view/data/show_more">
-            <span tal:content="header" />
+            <span tal:content="headerfull" />
         </a>
      </dt>    
     <div id="owl-demo" tal:attributes="id header" class="owl-carousel owl-theme " >
@@ -19,6 +20,11 @@
                   tal:attributes="href item/getURL" >
                 <img tal:condition="python:item.portal_type in ['Image', 'News Item']"
                      tal:attributes="src string:${item/getURL}/@@images/image/large">
+                <span class="portletItemTitle"
+                      tal:define="myObj python:item.getObject();"
+                      tal:content="structure myObj/pretty_title_or_id">
+                    Title
+                </span>
                 <span class="portletItemDetails"
                       tal:condition="view/data/show_dates"
                       tal:content="python:toLocalizedTime(item.Date)">
@@ -39,7 +45,8 @@
           slideSpeed : 600,
           paginationSpeed : 400,
           singleItem:true,
-          autoPlay : 5000
+          autoPlay : 5000,
+          stopOnHover : true
           });
         });
      <tal:x replace="structure string: &lt;/script&gt;" ></tal:x>
