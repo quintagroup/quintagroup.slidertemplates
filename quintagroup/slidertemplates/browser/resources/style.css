@@ -84,11 +84,13 @@ h2.resp-accordion {
     display: none;
     padding: 15px;
     }
-.resp-tab-content img {
-    margin: 10px 10px 10px 0;
-    max-width: 100%;
-    width: auto;
-    height: auto;
+.resp-tab-content .image_block {
+    display: block;
+    width: 168px;
+    height: 168px;
+    float: left;
+    background-size: cover;
+    margin: 0 15px 15px 0px;
     }
 .resp-tab-active {
     border: 1px solid #c1c1c1;
