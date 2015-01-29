@@ -63,6 +63,7 @@ ul.resp-tabs-list, p {
     display: inline-block;
     padding: 13px 15px;
     margin: 0;
+    position: relative;
     list-style: none;
     cursor: pointer;
     float: left;
@@ -83,6 +84,8 @@ h2.resp-accordion {
 .resp-tab-content {
     display: none;
     padding: 15px;
+    float: left;
+    background: #fff;
     }
 .resp-tab-content .image_block {
     display: block;
