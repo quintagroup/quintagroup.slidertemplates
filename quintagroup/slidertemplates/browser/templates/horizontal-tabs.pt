@@ -1,4 +1,4 @@
-<dl class="portlet portletCollection"
+<dl class="portlet portletHorizontalTab"
      i18n:domain="plone"
      tal:define="collection_url view/collection_url;
                  toLocalizedTime nocall:context/@@plone/toLocalizedTime;

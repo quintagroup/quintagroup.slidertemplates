@@ -163,6 +163,9 @@ h2.resp-tab-title:last-child {
     margin-right: -1px !important;
     padding: 14px 15px 15px 14px !important;
     }
+#content ul.resp-tabs-list {
+    margin-left: 0;
+    }
 .resp-arrow {
     width: 0;
     height: 0;

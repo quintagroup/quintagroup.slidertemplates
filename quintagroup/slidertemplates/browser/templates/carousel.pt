@@ -1,4 +1,4 @@
-<dl class="portlet portletCollection"
+<dl class="portlet portletCarousel"
      i18n:domain="plone"
      tal:define="collection_url view/collection_url;
                  headerfull view/data/header; 
@@ -17,20 +17,22 @@
                           obj item/getObject;">
               <a  href="#"
                   class="tile"
-                  tal:attributes="href item/getURL" >
+                  tal:attributes="href item/getURL">
                 <img tal:condition="python:item.portal_type in ['Image', 'News Item']"
-                     tal:attributes="src string:${item/getURL}/@@images/image/large">
-                <span class="portletItemTitle"
-                      tal:define="myObj python:item.getObject();"
-                      tal:content="structure myObj/pretty_title_or_id">
-                    Title
+                     tal:attributes="src string:${item/getURL}/@@images/image">
+                <span class="carousel-cont">
+                  <span class="portletItemTitle"
+                        tal:define="myObj python:item.getObject();"
+                        tal:content="structure myObj/pretty_title_or_id">
+                      Title
+                  </span>
+                  <span class="portletItemDetails"
+                        tal:condition="view/data/show_dates"
+                        tal:content="python:toLocalizedTime(item.Date)">
+                      Date
+                  </span>
+                  <p class="documentDescription" tal:content="item/Description" />
                 </span>
-                <span class="portletItemDetails"
-                      tal:condition="view/data/show_dates"
-                      tal:content="python:toLocalizedTime(item.Date)">
-                    Date
-                </span>
-                <p class="documentDescription" tal:content="item/Description" />
               </a>     
             </dd>
         </div>
