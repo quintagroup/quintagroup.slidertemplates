@@ -31,6 +31,17 @@
         </div>
       </div>
  
+      <div class="portletFooter" tal:condition="view/data/show_more">
+        <span class="portletBottomLeft"></span>
+        <span>
+          <a tal:attributes="href collection_url"
+             tal:content="structure view/show_more_label">
+            More&hellip;
+          </a>
+        </span>
+        <span class="portletBottomRight"></span>
+      </div>
+
      <tal:x replace="structure string:&lt;script type='text/javascript'&gt;"></tal:x>
         $(document).ready(function() {
 
