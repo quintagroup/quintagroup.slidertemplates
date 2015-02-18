@@ -13,30 +13,30 @@
     <span class="portletTopRight"></span>
   </dt>
 
-  <div id="owl-demo" tal:attributes="id header" class="owl-carousel owl-theme">
-    <div class="item" tal:repeat="item view/results">
-      <dd class="portletItem"
-          tal:define="oddrow repeat/item/odd;
-                      obj item/getObject;">
-          <a href="#"
-             class="tile"
-             tal:attributes="href item/getURL" >
-            <tal:block condition="python:item.portal_type in ['Image', 'News Item']">
-              <img tal:define="obj item/getObject;"
-                   tal:replace="structure obj/@@images/image/mini|nothing" />
-            </tal:block>
-            <span class="portletItemDetails"
-                  tal:condition="view/data/show_dates"
-                  tal:content="python:toLocalizedTime(item.Date)">
-              Date
-            </span>
-            <p class="documentDescription" tal:content="item/Description" />
-          </a>
-      </dd>
+  <dd class="portletItem">
+    <div id="owl-demo" tal:attributes="id header" class="owl-carousel owl-theme">
+      <div class="item" tal:repeat="item view/results">
+        <a href="#"
+           class="tile"
+           tal:attributes="href item/getURL" >
+          <tal:block condition="python:item.portal_type in ['Image', 'News Item']">
+            <img tal:define="obj item/getObject;"
+                 tal:replace="structure obj/@@images/image/mini|nothing" />
+          </tal:block>
+          <span class="portletItemDetails"
+                tal:condition="view/data/show_dates"
+                tal:content="python:toLocalizedTime(item.Date)">
+            Date
+          </span>
+          <p class="portletItemDescription" tal:content="item/Description">
+            Description
+          </p>
+        </a>
+      </div>
     </div>
-  </div>
+  </dd>
 
-  <div class="portletFooter" tal:condition="view/data/show_more">
+  <dd class="portletFooter" tal:condition="view/data/show_more">
     <span class="portletBottomLeft"></span>
     <span>
       <a tal:attributes="href collection_url"
@@ -45,7 +45,7 @@
       </a>
     </span>
     <span class="portletBottomRight"></span>
-  </div>
+  </dd>
 
   <tal:x replace="structure string:&lt;script type='text/javascript'&gt;"></tal:x>
     $(document).ready(function() {

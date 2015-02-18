@@ -1,5 +1,4 @@
 /*******general_styles******/
-
 .eventItemData ~ .portletItemDetails {
     display: none;
     }
@@ -245,7 +244,6 @@ dl.portlet .resp-accordion p  {
 }
 
 /***********Owl_Carousel**************/
-
 .owl-carousel .owl-wrapper:after {
     content: ".";
     display: block;
@@ -583,4 +581,12 @@ ul {
     .item_content {
         padding-right: 0 !important;
         }
+    }
+
+/*----- Shelf Portlet -----*/
+dl.portletShelf dd.portletItem {
+    padding: 0;
+    }
+.portletShelf .item {
+    padding: 1em;
     }
