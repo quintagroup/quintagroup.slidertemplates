@@ -180,7 +180,7 @@ h2.resp-tab-active span.resp-arrow {
     border-right: 6px solid transparent;
     border-bottom: 12px solid #9B9797;
     }
-    
+
 /*-----------Accordion styles-----------*/
 
 h2.resp-tab-active {
@@ -210,7 +210,7 @@ a {
     }
 
 @media only screen and (max-width: 768px) {
-    
+
 ul.resp-tabs-list {
     display: none;
     }
@@ -233,7 +233,7 @@ h2.resp-accordion {
 .resp-vtabs .resp-tab-content:last-child {
     border-bottom: 1px solid #c1c1c1 !important;
     }
-#portal-globalnav li ul.resp-tabs-list, 
+#portal-globalnav li ul.resp-tabs-list,
 #theme-globalnav li ul.resp-tabs-list {
     display: none;
     }
@@ -274,7 +274,7 @@ dl.portlet .resp-accordion p  {
     -ms-transition: height 500ms ease-in-out;
     -o-transition: height 500ms ease-in-out;
     transition: height 500ms ease-in-out;
-    }   
+    }
 .owl-carousel .owl-item{
     float: left;
     }
@@ -293,7 +293,7 @@ dl.portlet .resp-accordion p  {
 
 /* mouse grab icon */
 
-.grabbing { 
+.grabbing {
     cursor:url(grabbing.png) 8 8, move;
     }
 
@@ -412,7 +412,7 @@ dl.portlet .resp-accordion p  {
     overflow: hidden;
     position: relative;
     width: 100%;
-    }   
+    }
 .qg-carousel .qg-item {
     float: left;
     }
@@ -512,7 +512,7 @@ dl.portlet .qg-carousel dd.portletItem {
     position: relative;
     }
 .bx-wrapper .image_block {
-    background-size: cover;  
+    background-size: cover;
     }
 .pager-item  {
     margin-right: 30px;
