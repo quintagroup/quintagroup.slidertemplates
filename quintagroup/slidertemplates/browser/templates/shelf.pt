@@ -6,9 +6,11 @@
                 header python:headerfull.replace(' ', '');">
 
   <dt class="portletHeader">
+    <span class="portletTopLeft"></span>
     <a tal:attributes="href collection_url" tal:omit-tag="not:view/data/show_more">
-      <span tal:content="headerfull" />
+      <span tal:content="view/data/header" />
     </a>
+    <span class="portletTopRight"></span>
   </dt>
 
   <div id="owl-demo" tal:attributes="id header" class="owl-carousel owl-theme">
