@@ -592,4 +592,5 @@ dl.portletShelf dd.portletItem {
     }
 .portletShelf .itemBlock {
     display: block;
+    padding: 0 0 0.5em;
     }

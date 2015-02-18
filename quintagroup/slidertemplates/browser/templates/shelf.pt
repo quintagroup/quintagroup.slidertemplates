@@ -24,7 +24,7 @@
                  tal:replace="structure obj/@@images/image/mini|nothing" />
           </tal:block>
           <span class="itemBlock itemTitle"
-                tal:condition="item/Title|item/getId|item/id">
+                tal:content="item/Title|item/getId|item/id">
             Title
           </span>
           <span class="itemBlock itemDate"
@@ -63,4 +63,4 @@
     $("body").data("page", "frontpage");
   <tal:x replace="structure string: &lt;/script&gt;" ></tal:x>
 
- </dl>
+</dl>
