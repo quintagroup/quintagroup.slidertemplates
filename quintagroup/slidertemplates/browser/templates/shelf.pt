@@ -21,8 +21,10 @@
           <a href="#"
              class="tile"
              tal:attributes="href item/getURL" >
-            <img tal:condition="python:item.portal_type in ['Image', 'News Item']"
-                 tal:attributes="src string:${item/getURL}/@@images/image/mini">
+            <tal:block condition="python:item.portal_type in ['Image', 'News Item']">
+              <img tal:define="obj item/getObject;"
+                   tal:replace="structure obj/@@images/image/mini|nothing" />
+            </tal:block>
             <span class="portletItemDetails"
                   tal:condition="view/data/show_dates"
                   tal:content="python:toLocalizedTime(item.Date)">
