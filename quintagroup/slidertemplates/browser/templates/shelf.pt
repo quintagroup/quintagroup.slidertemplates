@@ -23,14 +23,18 @@
             <img tal:define="obj item/getObject;"
                  tal:replace="structure obj/@@images/image/mini|nothing" />
           </tal:block>
-          <span class="portletItemDetails"
+          <span class="itemBlock itemTitle"
+                tal:condition="item/Title|item/getId|item/id">
+            Title
+          </span>
+          <span class="itemBlock itemDate"
                 tal:condition="view/data/show_dates"
                 tal:content="python:toLocalizedTime(item.Date)">
             Date
           </span>
-          <p class="portletItemDescription" tal:content="item/Description">
+          <span class="itemBlock itemDescription" tal:content="item/Description">
             Description
-          </p>
+          </span>
         </a>
       </div>
     </div>
