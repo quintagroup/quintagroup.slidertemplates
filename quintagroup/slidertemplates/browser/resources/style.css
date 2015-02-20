@@ -7,7 +7,7 @@
     margin: 5px 0;
     }
 
-/*----- Tabs Styles -----*/
+/*---------- Tabs Styles ----------*/
 #portal-globalnav li ul.resp-tabs-list,
 #theme-globalnav li ul.resp-tabs-list {
     display: block;
@@ -149,7 +149,7 @@
         }
     }
 
-/*-----------Accordion styles-----------*/
+/*---Accordion styles---*/
 h2.resp-tab-title:last-child {
     border-bottom: 12px solid #c1c1c1 !important;
     background: blue;
@@ -178,45 +178,57 @@ h2.resp-tab-title:last-child {
         }
     }
 
-/***********Owl_Carousel**************/
-.owl-carousel .owl-wrapper:after {
-    content: ".";
-    display: block;
-    clear: both;
-    visibility: hidden;
-    line-height: 0;
-    height: 0;
-    }
-.owl-carousel{
+/*---------- OWL Carousel ----------*/
+.owl-carousel {
+    -ms-touch-action: pan-y;
     display: none;
     position: relative;
     width: 100%;
-    -ms-touch-action: pan-y;
     }
-.owl-carousel .owl-wrapper{
-    display: none;
-    position: relative;
-    -webkit-transform: translate3d(0px, 0px, 0px);
-    }
-.owl-carousel .owl-wrapper-outer{
+.owl-carousel .owl-wrapper-outer {
     overflow: hidden;
     position: relative;
     width: 100%;
     }
-.owl-carousel .owl-wrapper-outer.autoHeight{
-    -webkit-transition: height 500ms ease-in-out;
+.owl-carousel .owl-wrapper-outer.autoHeight {
     -moz-transition: height 500ms ease-in-out;
     -ms-transition: height 500ms ease-in-out;
     -o-transition: height 500ms ease-in-out;
+    -webkit-transition: height 500ms ease-in-out;
     transition: height 500ms ease-in-out;
     }
-.owl-carousel .owl-item{
+.owl-carousel .owl-wrapper {
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0); /* Chrome, Opera 15+, Safari 3.1+ */
+    -ms-transform: translate3d(0, 0, 0); /* IE 9 */
+    transform: translate3d(0, 0, 0); /* Firefox 16+, IE 10+, Opera */
+    display: none;
+    position: relative;
+    }
+.owl-carousel .owl-wrapper:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+    }
+.owl-carousel .owl-item {
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility:    hidden;
+    -ms-backface-visibility:     hidden;
+    -webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
     float: left;
     }
-.owl-controls .owl-page,
-.owl-controls .owl-buttons div{
-    cursor: pointer;
+.grabbing {
+    cursor: move;
     }
+
+/*----- OWL controls -----*/
 .owl-controls {
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -224,95 +236,62 @@ h2.resp-tab-title:last-child {
     -ms-user-select: none;
     user-select: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    }
-
-/* mouse grab icon */
-
-.grabbing {
-    cursor:url(grabbing.png) 8 8, move;
-    }
-
-/* fix */
-.owl-carousel  .owl-wrapper,
-.owl-carousel  .owl-item{
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility:    hidden;
-    -ms-backface-visibility:     hidden;
-  -webkit-transform: translate3d(0,0,0);
-  -moz-transform: translate3d(0,0,0);
-  -ms-transform: translate3d(0,0,0);
-    }
-.owl-theme .owl-controls{
     margin-top: 10px;
     text-align: center;
     }
 
-/* Styling Next and Prev buttons */
-
-.owl-theme .owl-controls .owl-buttons div{
-    color: #FFF;
+/* Styling Pagination */
+.owl-controls .owl-page {
+    cursor: pointer;
     display: inline-block;
     zoom: 1;
-    *display: inline;/*IE7 life-saver */
-    margin: 5px;
-    padding: 3px 10px;
-    font-size: 12px;
-    -webkit-border-radius: 30px;
-    -moz-border-radius: 30px;
-    border-radius: 30px;
-    background: #869791;
-    filter: Alpha(Opacity=50);/*IE7 fix*/
-    opacity: 0.5;
     }
-.owl-theme .owl-controls.clickable .owl-buttons div:hover{
-    filter: Alpha(Opacity=100);/*IE7 fix*/
-    opacity: 1;
-    text-decoration: none;
-    }
-
-/* Styling Pagination*/
-
-.owl-theme .owl-controls .owl-page{
-    display: inline-block;
-    zoom: 1;
-    *display: inline;/*IE7 life-saver */
-    }
-.owl-theme .owl-controls .owl-page span{
+.owl-theme .owl-controls .owl-page span {
+    background-color: #869791;
+    border-radius: 50%;
     display: block;
-    width: 8px;
     height: 8px;
     margin: 5px;
-    filter: Alpha(Opacity=50);/*IE7 fix*/
+    filter: Alpha(Opacity=50); /* fix IE8 */
     opacity: 0.5;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    border-radius: 20px;
-    background: #869791;
+    width: 8px;
     }
 .owl-theme .owl-controls .owl-page.active span,
-.owl-theme .owl-controls.clickable .owl-page:hover span{
-    filter: Alpha(Opacity=100);/*IE7 fix*/
+.owl-theme .owl-controls.clickable .owl-page:hover span {
+    filter: Alpha(Opacity=100);/* fix IE8 */
     opacity: 1;
     }
 
-/* If PaginationNumbers is true */
-
-.owl-theme .owl-controls .owl-page span.owl-numbers{
-    height: auto;
-    width: auto;
-    color: #FFF;
-    padding: 2px 10px;
-    font-size: 12px;
-    -webkit-border-radius: 30px;
-    -moz-border-radius: 30px;
+/* If Pagination Numbers is true */
+.owl-theme .owl-controls .owl-page span.owl-numbers {
     border-radius: 30px;
-    }
-.owl-item.loading{
-    min-height: 150px;
-    background: url(AjaxLoader.gif) no-repeat center center
+    color: #fff;
+    font-size: 12px;
+    height: auto;
+    padding: 2px 10px;
+    width: auto;
     }
 
+/* Styling Next and Prev buttons */
+.owl-controls .owl-buttons div {
+    background-color: #869791;
+    border-radius: 0.5em;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 12px;
+    margin: 5px;
+    filter: Alpha(Opacity=50); /* fix IE8 */
+    opacity: 0.5;
+    padding: 3px 10px;
+    zoom: 1;
+    }
+.owl-controls.clickable .owl-buttons div:hover {
+    filter: Alpha(Opacity=100); /* fix IE8 */
+    opacity: 1;
+    }
 
+/*---------- QG Carousel ----------*/
 #qg-example .qg-item {
     padding: 30px 0px;
     margin: 10px;
