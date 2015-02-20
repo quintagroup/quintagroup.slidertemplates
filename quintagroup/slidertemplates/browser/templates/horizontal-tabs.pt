@@ -6,45 +6,62 @@
                 header python:headerfull.replace(' ', '')">
 
   <dt class="portletHeader">
+    <span class="portletTopLeft"></span>
     <a tal:attributes="href collection_url" tal:omit-tag="not:view/data/show_more">
-      <span tal:content="headerfull" />
+      <span tal:content="view/data/header" />
     </a>
+    <span class="portletTopRight"></span>
   </dt>
 
-  <div id="verticalTab" class="tabContainer" tal:attributes="id header">
-    <ul class="resp-tabs-list">
-      <li tal:repeat="item view/results">
-        <span class="portletItemTitle"
-              tal:define="myObj python:item.getObject();"
-              tal:content="structure myObj/pretty_title_or_id">
-          Title
-        </span>
-      </li>
-    </ul>
+  <dd class="portletItem">
+    <div id="verticalTab"
+         tal:attributes="id header">
 
-    <div class="resp-tabs-container">
-      <div tal:repeat="item view/results">
-        <dd class="portletItem"
-            tal:define="oddrow repeat/item/odd;
-                        obj item/getObject;">
+      <ul class="resp-tabs-list">
+        <li tal:repeat="item view/results">
+          <span class="portletItemTitle"
+                tal:define="myObj python:item.getObject();"
+                tal:content="structure myObj/pretty_title_or_id">
+            Title
+          </span>
+        </li>
+      </ul>
+
+      <div class="resp-tabs-container">
+        <div tal:repeat="item view/results">
           <a href="#"
              class="tile"
              tal:attributes="href item/getURL">
-            <div class="image_block"
-                 tal:condition="python:item.portal_type in ['Image', 'News Item']"
-                 tal:attributes="style string:background-image:url(${item/getURL}/@@images/image/preview);">
-            </div>
-            <span class="portletItemDetails"
+            <tal:block condition="python:item.portal_type in ['Image', 'News Item']">
+              <img tal:define="obj item/getObject;"
+                   tal:replace="structure obj/@@images/image/mini|nothing" />
+            </tal:block>
+            <span class="itemBlock itemDate"
                   tal:condition="view/data/show_dates"
                   tal:content="python:toLocalizedTime(item.Date)">
               Date
             </span>
-            <p class="documentDescription" tal:content="item/Description" />
+            <span class="itemBlock itemDescription" tal:content="item/Description">
+              Description
+            </span>
           </a>
-        </dd>
+          <div class="visualClear"><!-- --></div>
+        </div>
       </div>
+
     </div>
-  </div>
+  </dd>
+
+  <dd class="portletFooter" tal:condition="view/data/show_more">
+    <span class="portletBottomLeft"></span>
+    <span>
+      <a tal:attributes="href collection_url"
+         tal:content="structure view/show_more_label">
+        More&hellip;
+      </a>
+    </span>
+    <span class="portletBottomRight"></span>
+  </dd>
 
   <tal:x replace="structure string:&lt;script type='text/javascript'&gt;"></tal:x>
     $(document).ready(function() {
