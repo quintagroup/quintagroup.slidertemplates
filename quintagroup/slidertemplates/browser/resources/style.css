@@ -224,6 +224,9 @@ h2.resp-tab-title:last-child {
     -ms-transform: translate3d(0,0,0);
     float: left;
     }
+.owl-carousel .owl-item img {
+    margin-bottom: 0.5em;
+    }
 .grabbing {
     cursor: move;
     }
@@ -495,15 +498,28 @@ dl.portlet .qg-carousel dd.portletItem {
 /*----- Shelf Portlet -----*/
 dl.portletHorizontalTab dd.portletItem,
 dl.portletVerticalTabs dd.portletItem,
+dl.portletOWLCarousel dd.portletItem,
 dl.portletShelf dd.portletItem {
     padding: 1em 0;
     }
+.portletOWLCarousel .item,
 .portletShelf .item {
     padding: 1em;
     }
-dl.portletHorizontalTab .itemBlock,
+.portletOWLCarousel .item .tile,
+.portletShelf .item .tile {
+    display: block;
+    }
+.portletShelf .item img {
+    margin-bottom: 0.5em;
+    }
+.portletHorizontalTab .itemBlock,
 .portletVerticalTabs .itemBlock,
+.portletOWLCarousel .itemBlock,
 .portletShelf .itemBlock {
     display: block;
     padding: 0 0 0.5em;
+    }
+.itemTitle {
+    font-weight: bold;
     }

@@ -1,4 +1,4 @@
-<dl class="portlet portletCarousel"
+<dl class="portlet portletOWLCarousel"
     i18n:domain="plone"
     tal:define="collection_url view/collection_url;
                 headerfull view/data/header;
@@ -6,38 +6,52 @@
                 toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
 
   <dt class="portletHeader">
+    <span class="portletTopLeft"></span>
     <a tal:attributes="href collection_url" tal:omit-tag="not:view/data/show_more">
-      <span tal:content="headerfull" />
+      <span tal:content="view/data/header" />
     </a>
+    <span class="portletTopRight"></span>
   </dt>
 
-  <div id="owl-demo" tal:attributes="id header" class="owl-carousel owl-theme">
-    <div class="item" tal:repeat="item view/results">
-      <dd class="portletItem"
-          tal:define="oddrow repeat/item/odd;
-                      obj item/getObject;">
+  <dd class="portletItem">
+    <div id="owl-demo" tal:attributes="id header" class="owl-carousel owl-theme">
+      <div class="item" tal:repeat="item view/results">
         <a href="#"
            class="tile"
            tal:attributes="href item/getURL">
-          <img tal:condition="python:item.portal_type in ['Image', 'News Item']"
-               tal:attributes="src string:${item/getURL}/@@images/image">
-          <span class="carousel-cont">
-            <span class="portletItemTitle"
-                  tal:define="myObj python:item.getObject();"
-                  tal:content="structure myObj/pretty_title_or_id">
+          <tal:block condition="python:item.portal_type in ['Image', 'News Item']">
+            <img tal:define="obj item/getObject;"
+                 tal:replace="structure obj/@@images/image/large|nothing" />
+          </tal:block>
+          <span class="carouselContent">
+            <span class="itemBlock itemTitle"
+                  tal:content="item/Title|item/getId|item/id">
               Title
             </span>
-            <span class="portletItemDetails"
+            <span class="itemBlock itemDate"
                   tal:condition="view/data/show_dates"
                   tal:content="python:toLocalizedTime(item.Date)">
-                Date
+              Date
             </span>
-            <p class="documentDescription" tal:content="item/Description" />
+            <span class="itemBlock itemDescription" tal:content="item/Description">
+              Description
+            </span>
           </span>
         </a>
-      </dd>
+      </div>
     </div>
-  </div>
+  </dd>
+
+  <dd class="portletFooter" tal:condition="view/data/show_more">
+    <span class="portletBottomLeft"></span>
+    <span>
+      <a tal:attributes="href collection_url"
+         tal:content="structure view/show_more_label">
+        More&hellip;
+      </a>
+    </span>
+    <span class="portletBottomRight"></span>
+  </dd>
 
   <tal:x replace="structure string:&lt;script type='text/javascript'&gt;"></tal:x>
     $(document).ready(function() {
