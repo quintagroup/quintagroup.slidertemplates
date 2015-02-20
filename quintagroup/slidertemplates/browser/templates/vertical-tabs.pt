@@ -6,14 +6,15 @@
                 header python:headerfull.replace(' ', '');">
 
   <dt class="portletHeader">
-      <a tal:attributes="href collection_url" tal:omit-tag="not:view/data/show_more">
-          <span tal:content="headerfull" />
-      </a>
+    <span class="portletTopLeft"></span>
+    <a tal:attributes="href collection_url" tal:omit-tag="not:view/data/show_more">
+      <span tal:content="view/data/header" />
+    </a>
+    <span class="portletTopRight"></span>
   </dt>
 
   <dd class="portletItem">
     <div id="verticalTab"
-         class="tabContainer"
          tal:attributes="id header">
 
       <ul class="resp-tabs-list">
@@ -50,8 +51,20 @@
         </div>
       </div>
 
+      <div class="visualClear"><!-- --></div>
     </div>
     <div class="visualClear"><!-- --></div>
+  </dd>
+
+  <dd class="portletFooter" tal:condition="view/data/show_more">
+    <span class="portletBottomLeft"></span>
+    <span>
+      <a tal:attributes="href collection_url"
+         tal:content="structure view/show_more_label">
+        More&hellip;
+      </a>
+    </span>
+    <span class="portletBottomRight"></span>
   </dd>
 
   <tal:x replace="structure string:&lt;script type='text/javascript'&gt;"></tal:x>
