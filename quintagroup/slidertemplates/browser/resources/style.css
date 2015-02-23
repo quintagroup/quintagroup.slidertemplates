@@ -250,26 +250,22 @@ h2.resp-tab-title:last-child {
     zoom: 1;
     }
 .owl-theme .owl-controls .owl-page span {
-    background-color: #869791;
+    background-color: #ddd;
     border-radius: 50%;
     display: block;
     height: 8px;
     margin: 5px;
-    filter: Alpha(Opacity=50); /* fix IE8 */
-    opacity: 0.5;
     width: 8px;
     }
 .owl-theme .owl-controls .owl-page.active span,
 .owl-theme .owl-controls.clickable .owl-page:hover span {
-    filter: Alpha(Opacity=100);/* fix IE8 */
-    opacity: 1;
+    background-color: #205c90;
     }
 
 /* If Pagination Numbers is true */
 .owl-theme .owl-controls .owl-page span.owl-numbers {
     border-radius: 30px;
     color: #fff;
-    font-size: 12px;
     height: auto;
     padding: 2px 10px;
     width: auto;
@@ -277,21 +273,17 @@ h2.resp-tab-title:last-child {
 
 /* Styling Next and Prev buttons */
 .owl-controls .owl-buttons div {
-    background-color: #869791;
-    border-radius: 0.5em;
-    color: #fff;
+    background-color: #ddd;
+    color: #205c90;
     cursor: pointer;
     display: inline-block;
-    font-size: 12px;
-    margin: 5px;
-    filter: Alpha(Opacity=50); /* fix IE8 */
-    opacity: 0.5;
-    padding: 3px 10px;
+    margin: 0.5em 1px 0.5em 0;
+    padding: 0.42em 1em;
     zoom: 1;
     }
 .owl-controls.clickable .owl-buttons div:hover {
-    filter: Alpha(Opacity=100); /* fix IE8 */
-    opacity: 1;
+    background-color: #205c90;
+    color: #fff;
     }
 
 /*---------- QG Carousel ----------*/
