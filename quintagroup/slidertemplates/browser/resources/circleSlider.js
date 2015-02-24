@@ -3,16 +3,16 @@ $.fn.contCarousel = function () {
   	var base = $(this);
 	base.find(".slider-wrapper").css({'top':0,'display':'block'});
 	$("<div class=\"bx-buttons\"><div class=\"bx-prev\">prev</div><div class=\"bx-next\">next</div></div>").insertBefore(base.find(".slider-wrapper"));
-  	
+
 	var slideWrap = base.find('.slider-wrapper');
 	var pagerWrap = base.find('.bx-pager');
 	var nextLink = base.find('.bx-next');
 	var prevLink = base.find('.bx-prev');
-	
+
 	var is_animate = false;
 
 	function widthCalculate () {
-		
+
 		var slideWidth = base.find(".slider-wrapper-outer").width();
 		var pagerWidth = slideWidth/2;
 		var scrollSlider = -slideWidth;
@@ -124,7 +124,7 @@ $.fn.contCarousel = function () {
 			          .parent()
 			          .css({'left': -pagerWidth-15});
 			      	});
-				
+
 				}
 				slideWrap.animate({'top': scrollSlider}, 500, function(){
 				    slideWrap
@@ -141,7 +141,7 @@ $.fn.contCarousel = function () {
 				          .parent()
 				          .css({'left': -pagerWidth-15});
 				      	});
-				}, 400);			
+				}, 400);
 			}
 		});
 	}
