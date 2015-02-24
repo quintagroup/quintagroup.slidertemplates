@@ -18,8 +18,8 @@ $.fn.contCarousel = function () {
 		var scrollSlider = -slideWidth;
 		var scrollPager = -pagerWidth*2;
 
-		base.find(".image_block").css({'width':slideWidth,'height':slideWidth});
-		base.find(".pager-item > .image_block ").css({'width':pagerWidth-15,'height':pagerWidth-15});
+		base.find(".block-visual").css({'width':slideWidth,'height':slideWidth});
+		base.find(".pager-item > .block-visual ").css({'width':pagerWidth-15,'height':pagerWidth-15});
 		base.find(".slider-wrapper-outer").css({'height':slideWidth });
 		base.find(".bx-buttons").css({'top':slideWidth-45});
 		pagerWrap.css({'height':pagerWidth});
