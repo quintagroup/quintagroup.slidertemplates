@@ -287,7 +287,7 @@ h2.resp-tab-title:last-child {
     }
 
 /*---------- QG Carousel ----------*/
-#qg-example .qg-item {
+/*#qg-example .qg-item {
     padding: 30px 0px;
     margin: 10px;
     color: #FFF;
@@ -300,6 +300,14 @@ h2.resp-tab-title:last-child {
     width: auto;
     margin: 0 auto;
     display: block;
+    }*/
+.qg-carousel {
+    display: none;
+    position: relative;
+    width: 100%;
+    }
+.qg-carousel .qg-wrapper {
+    position: relative;
     }
 .qg-carousel .qg-wrapper:after {
     content: ".";
@@ -309,15 +317,8 @@ h2.resp-tab-title:last-child {
     line-height: 0;
     height: 0;
     }
-.qg-carousel {
-    display: none;
-    position: relative;
-    width: 100%;
-    }
-.qg-carousel .qg-wrapper {
-    position: relative;
-    }
-.qg-carousel .qg-wrapper-outer{
+
+.qg-carousel .qg-wrapper-outer {
     overflow: hidden;
     position: relative;
     width: 100%;
@@ -325,16 +326,88 @@ h2.resp-tab-title:last-child {
 .qg-carousel .qg-item {
     float: left;
     }
-.qg-buttons {
-    text-align: center;
+
+/*.qg-carousel .qg-wrapper,
+.qg-carousel .image-block,
+.qg-carousel .item-visual,
+.qg-carousel .qg-item,
+.qg-carousel .qg-item.active*/
+.qg-carousel .qg-wrapper,
+.qg-carousel .image-block,
+.qg-carousel .item-visual,
+.qg-carousel .qg-item {
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
     }
-.qg-buttons div{
-    cursor: pointer;
-    }
-#qg-example .qg-item {
+
+/*.qg-carousel .qg-item {*/
+    /*-webkit-box-sizing: padding-box;
+    -moz-box-sizing: padding-box;
+    box-sizing: padding-box;*/
+    /*margin: 0 30px 0 0;*/
+    /*}*/
+
+/*#qg-example .qg-item {
     float: left;
+    }*/
+
+
+
+/*dl.portlet .qg-carousel .item-visual {
+    padding: 1em 0;
+    }*/
+
+.qg-item .item-visual {
+    display: block;
+    overflow: hidden;
+    /*padding: 0 0 1em 2em;*/
+    margin: 0 0 1em 2em;
     }
-#qg-example .qg-item {
+.qg-item.active .item-visual {
+    /*padding: 0 0 1em;*/
+    margin: 0 0 1em;
+    }
+
+
+
+/*.qg-item .image-block {
+height: auto;
+max-width: 100%;
+width: auto;
+}*/
+
+
+
+.qg-item .image-block {
+    background-size: cover;
+    float: left;
+    margin: 0 0 0.5em 0;
+    }
+
+.qg-item.active .image-block {
+    /*width: 60%;*/
+    margin: 0 1.25em 0 0;
+    }
+
+
+
+/*.qg-item .visualClear {
+    display: block;
+}*/
+
+
+/*.qg-carousel .qg-item .item-visual .documentDescription {
+    display: block;
+    overflow: hidden;
+    }*/
+
+
+.qg-item .itemBody {
+    display: block;
+    }
+/*#qg-example .qg-item {
     margin: 0;
     padding: 0;
     padding: 0 5px;
@@ -345,12 +418,24 @@ h2.resp-tab-title:last-child {
 #qg-example .qg-item.active {
     margin-left: 0;
     }
-#qg-example .qg-item>div {
+#qg-example .qg-item > div {
     padding: 30px 0px;
-    }
+    }*/
+
+
+
+
+
+
 .qg-carousel .owl-controls {
     margin-top: 10px;
     text-align: center;
+    }
+.qg-buttons {
+    text-align: center;
+    }
+.qg-buttons div{
+    cursor: pointer;
     }
 .qg-carousel .qg-buttons div {
     color: #FFF;
@@ -372,32 +457,25 @@ h2.resp-tab-title:last-child {
     opacity: 1;
     text-decoration: none;
     }
-.qg-carousel .qg-item .portletItem .image_block {
-    background-size: cover;
-    float: left;
-    margin: 0 30px 7px 0;
-    }
-.qg-carousel .qg-item {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    margin: 0 30px 0 0;
-    }
-dl.portlet .qg-carousel dd.portletItem {
-    padding: 1em 0;
-    }
-.qg-carousel .qg-item .portletItem .documentDescription {
-    display: block;
-    overflow: hidden;
-    }
-@media only screen and (max-width: 479px) {
+
+/*@media only screen and (min-width: 767px) {
     .qg-carousel .qg-item {
+        margin: 0 30px 0 0;
+        }
+    }*/
+
+@media only screen and (max-width: 479px) {
+    /*.qg-carousel .qg-item {
         margin-right: 15px !important;
         }
     .item_content {
         padding-right: 0 !important;
+        }*/
+    .qg-item.active .image-block {
+        margin: 0;
         }
     }
+
 
 /*---------- Circle Carousel ----------*/
 .slider-wrapper-outer {
@@ -497,6 +575,7 @@ dl.portletShelf dd.portletItem {
 .portletHorizontalTab .itemBlock,
 .portletVerticalTabs .itemBlock,
 .portletOWLCarousel .itemBlock,
+.portletQgCarousel .itemBlock,
 .portletShelf .itemBlock {
     display: block;
     padding: 0 0 0.5em;
