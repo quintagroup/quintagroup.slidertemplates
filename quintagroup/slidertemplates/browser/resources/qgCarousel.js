@@ -30,7 +30,7 @@ $.fn.qgCarousel = function () {
       itemActive.find(".image-block").css({'width':imageWidth,'height':imageWidth});
     } else if ($(window).width() >= 480) {
       var wrapperWidthPhone = widthWrapperOuter * item.length;
-      item.css({'width':widthWrapperOuter,'height':widthWrapperOuter*2});
+      item.css({'width':widthWrapperOuter,'height':widthWrapperOuter*3/2});
       var pixels = -(itemBeforeActive*widthWrapperOuter);
       item.parent().css({'width':wrapperWidthPhone+100});
       item.parent().css(doTransform(pixels));
@@ -42,7 +42,6 @@ $.fn.qgCarousel = function () {
       item.parent().css(doTransform(pixels));
       item.parent().css({'width':wrapperWidthPhone+100});
       item.find(".image-block").css({'width':widthWrapperOuter,'height':widthWrapperOuter});
-      console.log(widthWrapperOuter);
       };
     };
 
@@ -150,7 +149,6 @@ $.fn.qgCarousel = function () {
       base.find(".qg-item").css({'width':widthWrapperOuter});
     } else {
       var wrapperWidthPhone = (widthWrapperOuter) * (base.find(".qg-item").length);
-      console.log(widthWrapperOuter)
       if(base.find(".qg-item.active").is(':first-child')) {
         base.find(".qg-item.active").removeClass("active");
         base.find(".qg-item").last().addClass("active");
