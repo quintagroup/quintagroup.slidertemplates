@@ -1,66 +1,69 @@
-<dl class="portlet portletShelf"
-    i18n:domain="plone"
-    tal:define="collection_url view/collection_url;
-                toLocalizedTime nocall:context/@@plone/toLocalizedTime;
-                headerfull view/data/header;
-                header python:headerfull.replace(' ', '');">
+<tal:portlet tal:define="headerfull view/data/header;
+                         header python:headerfull.replace(' ', '')">
 
-  <dt class="portletHeader">
-    <span class="portletTopLeft"></span>
-    <a tal:attributes="href collection_url" tal:omit-tag="not:view/data/show_more">
-      <span tal:content="view/data/header" />
-    </a>
-    <span class="portletTopRight"></span>
-  </dt>
+  <dl class="portlet portletShelf"
+      i18n:domain="plone"
+      tal:define="collection_url view/collection_url;
+                  toLocalizedTime nocall:context/@@plone/toLocalizedTime">
 
-  <dd class="portletItem">
-    <div id="owl-demo" tal:attributes="id header" class="owl-carousel owl-theme">
-      <div class="item" tal:repeat="item view/results">
-        <a href="#"
-           class="tile"
-           tal:attributes="href item/getURL" >
-          <tal:block condition="python:item.portal_type in ['Image', 'News Item']">
-            <img tal:define="obj item/getObject;"
-                 tal:replace="structure obj/@@images/image/mini|nothing" />
-          </tal:block>
-          <span class="itemBlock itemTitle"
-                tal:content="item/Title|item/getId|item/id">
-            Title
-          </span>
-          <span class="itemBlock itemDate"
-                tal:condition="view/data/show_dates"
-                tal:content="python:toLocalizedTime(item.Date)">
-            Date
-          </span>
-          <span class="itemBlock itemDescription" tal:content="item/Description">
-            Description
-          </span>
-        </a>
-      </div>
-    </div>
-  </dd>
-
-  <dd class="portletFooter" tal:condition="view/data/show_more">
-    <span class="portletBottomLeft"></span>
-    <span>
-      <a tal:attributes="href collection_url"
-         tal:content="structure view/show_more_label">
-        More&hellip;
+    <dt class="portletHeader">
+      <span class="portletTopLeft"></span>
+      <a tal:attributes="href collection_url" tal:omit-tag="not:view/data/show_more">
+        <span tal:content="view/data/header" />
       </a>
-    </span>
-    <span class="portletBottomRight"></span>
-  </dd>
+      <span class="portletTopRight"></span>
+    </dt>
+
+    <dd class="portletItem">
+      <div id="owl-demo" tal:attributes="id header" class="owl-carousel owl-theme">
+        <div class="item" tal:repeat="item view/results">
+          <a href="#"
+             class="tile"
+             tal:attributes="href item/getURL" >
+            <tal:block condition="python:item.portal_type in ['Image', 'News Item']">
+              <img tal:define="obj item/getObject;"
+                   tal:replace="structure obj/@@images/image/mini|nothing" />
+            </tal:block>
+            <span class="itemBlock itemTitle"
+                  tal:content="item/Title|item/getId|item/id">
+              Title
+            </span>
+            <span class="itemBlock itemDate"
+                  tal:condition="view/data/show_dates"
+                  tal:content="python:toLocalizedTime(item.Date)">
+              Date
+            </span>
+            <span class="itemBlock itemDescription" tal:content="item/Description">
+              Description
+            </span>
+          </a>
+        </div>
+      </div>
+    </dd>
+
+    <dd class="portletFooter" tal:condition="view/data/show_more">
+      <span class="portletBottomLeft"></span>
+      <span>
+        <a tal:attributes="href collection_url"
+           tal:content="structure view/show_more_label">
+          More&hellip;
+        </a>
+      </span>
+      <span class="portletBottomRight"></span>
+    </dd>
+
+  </dl>
 
   <tal:x replace="structure string:&lt;script type='text/javascript'&gt;"></tal:x>
     $(document).ready(function() {
-      $("#<tal:x replace="header"></tal:x>").owlCarousel({
-          itemsDesktop : [1199,3],
-          itemsCustom : false,
-          items : 3,
-          navigation : true,
-      });
+        $("#<tal:x replace='header'></tal:x>").owlCarousel({
+            itemsDesktop: [1199, 3],
+            itemsCustom: false,
+            items: 3,
+            navigation: true,
+        });
     });
     $("body").data("page", "frontpage");
   <tal:x replace="structure string: &lt;/script&gt;" ></tal:x>
 
-</dl>
+</tal:portlet>
