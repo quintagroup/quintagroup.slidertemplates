@@ -151,8 +151,8 @@
 
 /*---Accordion styles---*/
 h2.resp-tab-title:last-child {
-    border-bottom: 12px solid #c1c1c1 !important;
     background: blue;
+    border-bottom: 12px solid #c1c1c1 !important;
     }
 .resp-easy-accordion  h2.resp-accordion {
     display: block;
@@ -164,8 +164,8 @@ h2.resp-tab-title:last-child {
     border-bottom: 1px solid #c1c1c1 !important;
     }
 .resp-jfit {
+    margin: 0;
     width: 100%;
-    margin: 0px;
     }
 .resp-tab-content-active {
     display: block;
@@ -271,36 +271,7 @@ h2.resp-tab-title:last-child {
     width: auto;
     }
 
-/* Styling Next and Prev buttons */
-.owl-controls .owl-buttons div {
-    background-color: #ddd;
-    color: #205c90;
-    cursor: pointer;
-    display: inline-block;
-    margin: 0.5em 1px 0.5em 0;
-    padding: 0.42em 1em;
-    zoom: 1;
-    }
-.owl-controls.clickable .owl-buttons div:hover {
-    background-color: #205c90;
-    color: #fff;
-    }
-
 /*---------- QG Carousel ----------*/
-/*#qg-example .qg-item {
-    padding: 30px 0px;
-    margin: 10px;
-    color: #FFF;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    text-align: center;
-    }
-#qg-example .qg-item img{
-    width: auto;
-    margin: 0 auto;
-    display: block;
-    }*/
 .qg-carousel {
     display: none;
     position: relative;
@@ -310,14 +281,13 @@ h2.resp-tab-title:last-child {
     position: relative;
     }
 .qg-carousel .qg-wrapper:after {
+    clear: both;
     content: ".";
     display: block;
-    clear: both;
-    visibility: hidden;
-    line-height: 0;
     height: 0;
+    line-height: 0;
+    visibility: hidden;
     }
-
 .qg-carousel .qg-wrapper-outer {
     overflow: hidden;
     position: relative;
@@ -326,12 +296,6 @@ h2.resp-tab-title:last-child {
 .qg-carousel .qg-item {
     float: left;
     }
-
-/*.qg-carousel .qg-wrapper,
-.qg-carousel .image-block,
-.qg-carousel .item-visual,
-.qg-carousel .qg-item,
-.qg-carousel .qg-item.active*/
 .qg-carousel .qg-wrapper,
 .qg-carousel .image-block,
 .qg-carousel .item-visual,
@@ -341,141 +305,34 @@ h2.resp-tab-title:last-child {
     -o-transition: all 1s ease;
     transition: all 1s ease;
     }
-
-/*.qg-carousel .qg-item {*/
-    /*-webkit-box-sizing: padding-box;
-    -moz-box-sizing: padding-box;
-    box-sizing: padding-box;*/
-    /*margin: 0 30px 0 0;*/
-    /*}*/
-
-/*#qg-example .qg-item {
-    float: left;
-    }*/
-
-
-
-/*dl.portlet .qg-carousel .item-visual {
-    padding: 1em 0;
-    }*/
-
 .qg-item .item-visual {
     display: block;
-    overflow: hidden;
-    /*padding: 0 0 1em 2em;*/
     margin: 0 0 1em 2em;
+    overflow: hidden;
     }
 .qg-item.active .item-visual {
-    /*padding: 0 0 1em;*/
     margin: 0 0 1em;
     }
-
-
-
-/*.qg-item .image-block {
-height: auto;
-max-width: 100%;
-width: auto;
-}*/
-
-
-
 .qg-item .image-block {
     background-size: cover;
     float: left;
     margin: 0 0 0.5em 0;
     }
-
 .qg-item.active .image-block {
-    /*width: 60%;*/
     margin: 0 1.25em 0 0;
     }
-
-
-
-/*.qg-item .visualClear {
-    display: block;
-}*/
-
-
-/*.qg-carousel .qg-item .item-visual .documentDescription {
-    display: block;
-    overflow: hidden;
-    }*/
-
-
 .qg-item .itemBody {
     display: block;
     }
-/*#qg-example .qg-item {
-    margin: 0;
-    padding: 0;
-    padding: 0 5px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    }
-#qg-example .qg-item.active {
-    margin-left: 0;
-    }
-#qg-example .qg-item > div {
-    padding: 30px 0px;
-    }*/
-
-
-
-
-
-
 .qg-carousel .owl-controls {
     margin-top: 10px;
     text-align: center;
     }
-.qg-buttons {
-    text-align: center;
-    }
-.qg-buttons div{
-    cursor: pointer;
-    }
-.qg-carousel .qg-buttons div {
-    color: #FFF;
-    display: inline-block;
-    zoom: 1;
-    *display: inline;/*IE7 life-saver */
-    margin: 5px;
-    padding: 3px 10px;
-    font-size: 12px;
-    -webkit-border-radius: 30px;
-    -moz-border-radius: 30px;
-    border-radius: 30px;
-    background: #869791;
-    filter: Alpha(Opacity=50);/*IE7 fix*/
-    opacity: 0.5;
-    }
-.qg-carousel .qg-buttons div:hover{
-    filter: Alpha(Opacity=100);/*IE7 fix*/
-    opacity: 1;
-    text-decoration: none;
-    }
-
-/*@media only screen and (min-width: 767px) {
-    .qg-carousel .qg-item {
-        margin: 0 30px 0 0;
-        }
-    }*/
-
 @media only screen and (max-width: 479px) {
-    /*.qg-carousel .qg-item {
-        margin-right: 15px !important;
-        }
-    .item_content {
-        padding-right: 0 !important;
-        }*/
     .qg-item.active .image-block {
         margin: 0;
         }
     }
-
 
 /*---------- Circle Carousel ----------*/
 .slider-wrapper-outer {
@@ -519,19 +376,6 @@ width: auto;
     width: 100%;
     z-index: 1;
     }
-.bx-buttons div {
-    background-color: #ddd;
-    color: #205c90;
-    cursor: pointer;
-    display: inline-block;
-    margin: 0 1px 0 0;
-    padding: 0.42em 1em 0.475em;
-    zoom: 1;
-    }
-.bx-buttons div:hover {
-    background-color: #205c90;
-    color: #fff;
-    }
 
 /* Control Circle Carousel */
 .contentslider-controls {
@@ -551,6 +395,25 @@ width: auto;
     float: left;
     margin-right: 30px;
     position: relative;
+    }
+
+/*---------- NG Collection Buttons ----------*/
+.ng-collection-buttons {
+    text-align: center;
+    }
+.ng-collection-buttons button {
+    background-color: #ddd;
+    border: 0;
+    color: #205c90;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 100%;
+    margin: 0.5em 1px 0.5em 0;
+    padding: 0.3em 1em 0.4em;
+    }
+.ng-collection-buttons button:hover {
+    background-color: #205c90;
+    color: #fff;
     }
 
 /*----- Shelf Portlet -----*/

@@ -2,7 +2,7 @@ $.fn.contCarousel = function () {
 
   	var base = $(this);
 	base.find(".slider-wrapper").css({'top':0,'display':'block'});
-	$("<div class=\"bx-buttons\"><div class=\"bx-prev\">prev</div><div class=\"bx-next\">next</div></div>").insertBefore(base.find(".slider-wrapper"));
+	$("<div class=\"bx-buttons ng-collection-buttons\"><button class=\"bx-prev\">prev</button><button class=\"bx-next\">next</button></div>").insertBefore(base.find(".slider-wrapper"));
 
 	var slideWrap = base.find('.slider-wrapper');
 	var pagerWrap = base.find('.bx-pager');

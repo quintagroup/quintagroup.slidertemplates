@@ -404,15 +404,15 @@ if (typeof Object.create !== "function") {
 
         buildButtons : function () {
             var base = this,
-                buttonsWrapper = $("<div class=\"owl-buttons\"/>");
+                buttonsWrapper = $("<div class=\"owl-buttons ng-collection-buttons\"/>");
             base.owlControls.append(buttonsWrapper);
 
-            base.buttonPrev = $("<div/>", {
+            base.buttonPrev = $("<button/>", {
                 "class" : "owl-prev",
                 "html" : base.options.navigationText[0] || ""
             });
 
-            base.buttonNext = $("<div/>", {
+            base.buttonNext = $("<button/>", {
                 "class" : "owl-next",
                 "html" : base.options.navigationText[1] || ""
             });
@@ -421,11 +421,11 @@ if (typeof Object.create !== "function") {
                 .append(base.buttonPrev)
                 .append(base.buttonNext);
 
-            buttonsWrapper.on("touchstart.owlControls mousedown.owlControls", "div[class^=\"owl\"]", function (event) {
+            buttonsWrapper.on("touchstart.owlControls mousedown.owlControls", "button[class^=\"owl\"]", function (event) {
                 event.preventDefault();
             });
 
-            buttonsWrapper.on("touchend.owlControls mouseup.owlControls", "div[class^=\"owl\"]", function (event) {
+            buttonsWrapper.on("touchend.owlControls mouseup.owlControls", "button[class^=\"owl\"]", function (event) {
                 event.preventDefault();
                 if ($(this).hasClass("owl-next")) {
                     base.next();
@@ -1197,7 +1197,7 @@ if (typeof Object.create !== "function") {
                 iterations += 1;
                 if (base.completeImg($lazyImg.get(0)) || isBackgroundImg === true) {
                     showImage();
-                } else if (iterations <= 100) {//if image loads in less than 10 seconds 
+                } else if (iterations <= 100) {//if image loads in less than 10 seconds
                     window.setTimeout(checkLazyImage, 100);
                 } else {
                     showImage();
@@ -1226,7 +1226,7 @@ if (typeof Object.create !== "function") {
                 iterations += 1;
                 if (base.completeImg($currentimg.get(0))) {
                     addHeight();
-                } else if (iterations <= 100) { //if image loads in less than 10 seconds 
+                } else if (iterations <= 100) { //if image loads in less than 10 seconds
                     window.setTimeout(checkImage, 100);
                 } else {
                     base.wrapperOuter.css("height", ""); //Else remove height attribute

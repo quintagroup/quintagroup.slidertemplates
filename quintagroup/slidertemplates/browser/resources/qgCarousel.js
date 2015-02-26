@@ -4,7 +4,7 @@ $.fn.qgCarousel = function() {
 
     $(".qg-carousel").css("display", "block");
     $(".qg-wrapper .qg-item:first-child").addClass("active");
-    $("<div class=\"qg-buttons\"><div class=\"qg-prev\">prev</div><div class=\"qg-next\">next</div></div>").insertAfter(base.children(".qg-wrapper-outer"));
+    $("<div class=\"qg-buttons ng-collection-buttons\"><button class=\"qg-prev\">prev</button><button class=\"qg-next\">next</button></div>").insertAfter(base.children(".qg-wrapper-outer"));
 
     var widthWrapperOuter = base.width();
 
