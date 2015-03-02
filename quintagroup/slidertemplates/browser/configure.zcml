@@ -11,8 +11,8 @@
     directory="templates"
     />
   <browser:resource
-    name="style.css"
-    file="resources/style.css"
+    name="slidertemplates.css"
+    file="resources/slidertemplates.css"
     />
   <browser:resource
     name="owl.carousel.js"
