@@ -6,13 +6,12 @@ $.fn.qgCarousel = function() {
     $(".qg-wrapper .qg-item:first-child").addClass("active");
     $("<div class=\"qg-buttons ng-collection-buttons\"><button class=\"qg-prev\">prev</button><button class=\"qg-next\">next</button></div>").insertAfter(base.children(".qg-wrapper-outer"));
 
-    var widthWrapperOuter = base.width();
-
     function widthCalculate() {
+
         var item = base.find(".qg-item");
-        var itemNoActive = base.find(".qg-item:not(.active)");
         var itemActive = base.find(".qg-item.active");
         var itemBeforeActive = item.index(itemActive);
+        var widthWrapperOuter = base.width();
 
         if ($(window).width() >= 768) {
             var activeWidth = widthWrapperOuter * 0.6;
@@ -33,10 +32,9 @@ $.fn.qgCarousel = function() {
                 'width': wrapperWidthDescktop
             });
             item.parent().css(doTransform(pixels));
-            var imgItem = itemNoActive.find('.item-visual').width();
             item.find(".image-block").css({
-                'width': imgItem,
-                'height': imgItem
+                'width': itemWidth-30,
+                'height': itemWidth-30
             });
             itemActive.find(".image-block").css({
                 'width': imageWidth,
@@ -45,8 +43,7 @@ $.fn.qgCarousel = function() {
         } else if ($(window).width() >= 480) {
             var wrapperWidthPhone = widthWrapperOuter * item.length;
             item.css({
-                'width': widthWrapperOuter,
-                'height': widthWrapperOuter * 3 / 2
+                'width': widthWrapperOuter
             });
             var pixels = -(itemBeforeActive * widthWrapperOuter);
             item.parent().css({
@@ -54,14 +51,16 @@ $.fn.qgCarousel = function() {
             });
             item.parent().css(doTransform(pixels));
             item.find(".image-block").css({
-                'width': widthWrapperOuter,
-                'height': widthWrapperOuter
+                'width':widthWrapperOuter*2/3,
+                'height':widthWrapperOuter*2/3
             });
+            item.find(".item-visual").css({
+                'height':widthWrapperOuter*2/3
+            })
         } else {
             var wrapperWidthPhone = widthWrapperOuter * item.length;
             item.css({
                 'width': widthWrapperOuter,
-                'height': widthWrapperOuter * 2
             });
             var pixels = -(itemBeforeActive * widthWrapperOuter);
             item.parent().css(doTransform(pixels));
@@ -72,14 +71,20 @@ $.fn.qgCarousel = function() {
                 'width': widthWrapperOuter,
                 'height': widthWrapperOuter
             });
+
+            var pixels = -(itemBeforeActive*(widthWrapperOuter+15));
+            item.find(".item-visual").css({'height':'auto'})
+
         };
     };
 
     function next() {
+        var widthWrapperOuter = base.width();
         var item = base.find(".qg-item");
-        var itemNoActive = base.find(".qg-item:not(.active)");
         var itemActive = base.find(".qg-item.active");
+        var itemNoActive = base.find(".qg-item:not(.active)");
         var imgItem = itemNoActive.find('.item-visual').width();
+        console.log(imgItem)
 
         if ($(window).width() >= 768) {
             var activeWidth = widthWrapperOuter * 0.6;
@@ -155,6 +160,7 @@ $.fn.qgCarousel = function() {
     }
 
     function prev() {
+        var widthWrapperOuter = base.width();
         var item = base.find(".qg-item");
         var itemNoActive = base.find(".qg-item:not(.active)");
         var itemActive = base.find(".qg-item.active");
