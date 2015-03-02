@@ -3,8 +3,7 @@
 
   <dl class="portlet portletShelf"
       i18n:domain="plone"
-      tal:define="collection_url view/collection_url;
-                  toLocalizedTime nocall:context/@@plone/toLocalizedTime">
+      tal:define="collection_url view/collection_url">
 
     <dt class="portletHeader">
       <span class="portletTopLeft"></span>
@@ -28,8 +27,11 @@
                 Title
               </span>
               <span class="itemBlock itemDate"
+                    tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                                item_date item/Date;
+                                itemdate python:toLocalizedTime(item_date)"
                     tal:condition="view/data/show_dates"
-                    tal:content="python:toLocalizedTime(item.Date)">
+                    tal:content="itemdate">
                 Date
               </span>
               <span class="itemBlock itemDescription" tal:content="item/Description">

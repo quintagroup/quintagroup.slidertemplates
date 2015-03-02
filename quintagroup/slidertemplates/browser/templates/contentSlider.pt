@@ -36,13 +36,13 @@
                           tal:content="item/Title|item/getId|item/id">
                       Title
                     </span>
-
                     <span class="itemBlock itemDate"
+                          tal:define="item_date item/Date;
+                                      itemdate python:toLocalizedTime(item_date)"
                           tal:condition="view/data/show_dates"
-                          tal:content="python:toLocalizedTime(item.Date)">
+                          tal:content="itemdate">
                       Date
                     </span>
-
                     <span class="itemBlock itemDescription" tal:content="item/Description">
                       Description
                     </span>
@@ -70,13 +70,13 @@
                             tal:content="item/Title|item/getId|item/id">
                         Title
                       </div>
-
                       <div class="itemBlock itemDate"
+                            tal:define="item_date item/Date;
+                                        itemdate python:toLocalizedTime(item_date)"
                             tal:condition="view/data/show_dates"
-                            tal:content="python:toLocalizedTime(item.Date)">
+                            tal:content="itemdate">
                         Date
                       </div>
-
                       <div class="itemBlock itemDescription" tal:content="item/Description">
                         Description
                       </div>
