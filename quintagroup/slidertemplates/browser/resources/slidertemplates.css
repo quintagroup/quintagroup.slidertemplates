@@ -434,7 +434,7 @@ dl.portletShelf dd.portletItem {
     padding: 1em;
     }
 .portletOWLCarousel .item .tile,
-.portletShelf .item .tile {
+.portletShelf .item .itemBody {
     display: block;
     }
 .portletShelf .item img {
