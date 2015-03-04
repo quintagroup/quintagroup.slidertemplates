@@ -44,7 +44,11 @@ dl.portlet .portletHorizontalTab li.resp-tab-item {
     margin: 0 0 -1px;
     display: inline-block;    
     }
-    
+.portletHorizontalTab .portletItem > div, 
+.portletVerticalTabs .portletItem > div {
+    display: none;
+    }   
+
 /* Tabs Container */
 .resp-tabs-container {
     border: 1px solid #c1c1c1;
@@ -278,12 +282,12 @@ h2.resp-tab-title:last-child {
 
 /*---------- QG Carousel ----------*/
 .qg-carousel {
-    display: none;
     position: relative;
     width: 100%;
     }
 .qg-carousel .qg-wrapper {
     position: relative;
+    display: none;
     }
 .qg-carousel .qg-wrapper:after {
     clear: both;
@@ -333,6 +337,9 @@ h2.resp-tab-title:last-child {
     margin-top: 10px;
     text-align: center;
     }
+.subs .qg-wrapper-outer .qg-buttons:last-child {
+    display: none;
+    }
 @media only screen and (max-width: 479px) {
     .qg-item.active .image-block {
         margin: 0;
@@ -347,9 +354,12 @@ h2.resp-tab-title:last-child {
     width: 100%;
     }
 .slider-wrapper {
-    display: none;
     height: 1000000px;
     position: relative;
+    }
+.slider-wrapper-outer,
+.contentslider-controls {
+    display: none;
     }
 .slider-wrapper .item {
     float: left;

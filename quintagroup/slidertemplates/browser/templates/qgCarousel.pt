@@ -18,13 +18,13 @@
         <div class="qg-wrapper-outer">
           <div class="qg-wrapper">
             <div class="qg-item" tal:repeat="item view/results">
-              <a tal:define="obj item/getObject;"
-                 href="#"
+              <a href="#"
                  class="tile item-visual"
                  tal:attributes="href item/getURL">
-                <span tal:define="scales obj/@@images;
-                                 thumbnail python: scales.scale('image', width=400, height=400);
-                                 img thumbnail/url|nothing"
+                <span tal:define="obj item/getObject;
+                                  scales obj/@@images;
+                                  thumbnail python: scales.scale('image', width=400, height=400);
+                                  img thumbnail/url|nothing"
                       tal:condition="python:item.portal_type in ['Image', 'News Item']"
                       tal:omit-tag="not:thumbnail"
                       tal:attributes="style string:background-image:url($img)"

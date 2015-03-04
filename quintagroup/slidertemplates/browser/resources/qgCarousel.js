@@ -1,10 +1,11 @@
 $.fn.qgCarousel = function() {
 
     var base = $(this);
+    console.log(base.find(".qg-wrapper"))
 
-    $(".qg-carousel").css("display", "block");
-    $(".qg-wrapper .qg-item:first-child").addClass("active");
-    $("<div class=\"qg-buttons ng-collection-buttons\"><button class=\"qg-prev\">prev</button><button class=\"qg-next\">next</button></div>").insertAfter(base.children(".qg-wrapper-outer"));
+    base.find(".qg-wrapper").css({"display":"block"});
+    base.find(".qg-wrapper .qg-item:first-child").addClass("active");
+    $("<div class=\"qg-buttons ng-collection-buttons\"><button class=\"qg-prev\">prev</button><button class=\"qg-next\">next</button></div>").insertAfter(base.find(".qg-wrapper"));
 
     function widthCalculate() {
 
