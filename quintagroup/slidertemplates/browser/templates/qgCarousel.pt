@@ -69,7 +69,10 @@
 
   <tal:x replace="structure string:&lt;script type='text/javascript'&gt;"></tal:x>
     $(document).ready(function() {
-        $("#<tal:x replace='header'></tal:x>").qgCarousel();
+        $("#<tal:x replace='header'></tal:x>").qgCarousel({
+          navigation: true,
+          navigationText : ["prev", "next"],
+        });
     });
   <tal:x replace="structure string: &lt;/script&gt;" ></tal:x>
 

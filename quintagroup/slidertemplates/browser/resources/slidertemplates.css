@@ -337,9 +337,6 @@ h2.resp-tab-title:last-child {
     margin-top: 10px;
     text-align: center;
     }
-.subs .qg-wrapper-outer .qg-buttons:last-child {
-    display: none;
-    }
 @media only screen and (max-width: 479px) {
     .qg-item.active .image-block {
         margin: 0;
