@@ -311,7 +311,6 @@ if (typeof Object.create !== "function") {
                 $this
                     .css({"width": base.itemWidth})
                     .data("owl-item", Number(index));
-
                 if (index % base.options.items === 0 || index === lastItem) {
                     if (!(index > lastItem)) {
                         roundPages += 1;
@@ -429,6 +428,11 @@ if (typeof Object.create !== "function") {
                 event.preventDefault();
                 if ($(this).hasClass("owl-next")) {
                     base.next();
+                    if (base.browser.support3d === true) {
+                        console.log("support")
+                    } else {
+                        console.log("not support")
+                    }
                 } else {
                     base.prev();
                 }
@@ -971,6 +975,7 @@ if (typeof Object.create !== "function") {
                         ev.preventDefault();
                     } else {
                         ev.returnValue = false;
+
                     }
                     locals.sliding = true;
                 }

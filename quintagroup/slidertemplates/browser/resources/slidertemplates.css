@@ -188,6 +188,7 @@ h2.resp-tab-title:last-child {
     }
 
 /*---------- OWL Carousel ----------*/
+.qg-carousel,
 .owl-carousel {
     -ms-touch-action: pan-y;
     display: none;
@@ -288,6 +289,7 @@ h2.resp-tab-title:last-child {
 .qg-carousel .qg-wrapper {
     position: relative;
     display: none;
+    overflow: hidden;
     }
 .qg-carousel .qg-wrapper:after {
     clear: both;
@@ -305,14 +307,13 @@ h2.resp-tab-title:last-child {
 .qg-carousel .qg-item {
     float: left;
     }
-.qg-carousel .qg-wrapper,
 .qg-carousel .image-block,
 .qg-carousel .item-visual,
 .qg-carousel .qg-item {
-    -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    transition: all 1s ease;
+    -webkit-transition: all 1s ease !important;
+    -moz-transition: all 1s ease !important;
+    -o-transition: all 1s ease !important;
+    transition: all 1s ease !important;
     }
 .qg-item .item-visual {
     display: block;

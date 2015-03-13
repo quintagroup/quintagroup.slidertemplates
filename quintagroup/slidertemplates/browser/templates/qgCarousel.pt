@@ -15,42 +15,38 @@
 
     <dd class="portletItem">
       <div tal:attributes="id header" class="qg-carousel">
-        <div class="qg-wrapper-outer">
-          <div class="qg-wrapper">
-            <div class="qg-item" tal:repeat="item view/results">
-              <a href="#"
-                 class="tile item-visual"
-                 tal:attributes="href item/getURL">
-                <span tal:define="obj item/getObject;
-                                  scales obj/@@images;
-                                  thumbnail python: scales.scale('image', width=400, height=400);
-                                  img thumbnail/url|nothing"
-                      tal:condition="python:item.portal_type in ['Image', 'News Item']"
-                      tal:omit-tag="not:thumbnail"
-                      tal:attributes="style string:background-image:url($img)"
-                      class="image-block">
+          <div class="qg-item" tal:repeat="item view/results">
+            <a href="#"
+               class="tile item-visual"
+               tal:attributes="href item/getURL">
+              <span tal:define="obj item/getObject;
+                                scales obj/@@images;
+                                thumbnail python: scales.scale('image', width=400, height=400);
+                                img thumbnail/url|nothing"
+                    tal:condition="python:item.portal_type in ['Image', 'News Item']"
+                    tal:omit-tag="not:thumbnail"
+                    tal:attributes="style string:background-image:url($img)"
+                    class="image-block">
+              </span>
+              <span class="itemBody">
+                <span class="itemBlock itemTitle"
+                      tal:content="item/Title|item/getId|item/id">
+                  Title
                 </span>
-                <span class="itemBody">
-                  <span class="itemBlock itemTitle"
-                        tal:content="item/Title|item/getId|item/id">
-                    Title
-                  </span>
-                  <span class="itemBlock itemDate"
-                        tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
-                                    item_date item/Date;
-                                    itemdate python:toLocalizedTime(item_date)"
-                        tal:condition="view/data/show_dates"
-                        tal:content="itemdate">
-                    Date
-                  </span>
-                  <span class="itemBlock itemDescription" tal:content="item/Description">
-                    Description
-                  </span>
+                <span class="itemBlock itemDate"
+                      tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                                  item_date item/Date;
+                                  itemdate python:toLocalizedTime(item_date)"
+                      tal:condition="view/data/show_dates"
+                      tal:content="itemdate">
+                  Date
                 </span>
-              </a>
-            </div>
+                <span class="itemBlock itemDescription" tal:content="item/Description">
+                  Description
+                </span>
+              </span>
+            </a>
           </div>
-        </div>
       </div>
     </dd>
 
