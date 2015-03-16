@@ -222,9 +222,6 @@ if (typeof Object.create !== "function") {
                     'height' : base.$imageWidth
                     });
                 base.transitionItemDesc();
-                // base.$qgItems.css({
-                //     'height' : base.$imageWidth
-                //     });
                 if (base.browser.support3d === true) {
                     base.$qgWrapper.css(
                     	base.doTranslate(base.$pixelDesctop)
@@ -506,6 +503,8 @@ if (typeof Object.create !== "function") {
 
  		gestures : function () {
  			var base = this,
+ 				is_down = false,
+ 				is_move = false,
  			    locals = {
                     offsetX : 0,
                     offsetY : 0,
@@ -558,8 +557,6 @@ if (typeof Object.create !== "function") {
 
                 base.newPosX = 0;
                 base.newRelativeX = 0;
-
-                console.log($(this))
                 
                 $(this).css(base.removeTransition());
 
@@ -569,43 +566,35 @@ if (typeof Object.create !== "function") {
                 locals.offsetX = getTouches(ev).x - position.left;
                 locals.offsetY = getTouches(ev).y - position.top;
 
-            	swapEvents("on");
+                swapEvents("on");
 
                 locals.sliding = false;
                 locals.targetElement = ev.target || ev.srcElement;
-
-            }
+            	}
 
             function dragMove(event) {
 				var ev = event.originalEvent || event || window.event;
 
-                base.newPosX = getTouches(ev).x - locals.offsetX;
+				base.newPosX = getTouches(ev).x - locals.offsetX;
                 base.newPosY = getTouches(ev).y - locals.offsetY;
                 base.newRelativeX = base.newPosX - locals.relativePos;
                 base.tempPositionDesc = base.$pixelDesctop + base.newRelativeX;
                 base.tempPositionTablets = base.$pixelTablet + base.newRelativeX;
-                
-                if (typeof base.options.startDragging === "function" && locals.dragging !== true && base.newRelativeX !== 0) {
-                    locals.dragging = true;
-                    base.options.startDragging.apply(base, [base.$elem]);
-                }
 
-                if ((base.newRelativeX > 8 || base.newRelativeX < -8) && (base.browser.isTouch === true)) {
+                if (base.newRelativeX > 8 || base.newRelativeX < -8) {
                     if (ev.preventDefault !== undefined) {
                         ev.preventDefault();
                     } else {
                         ev.returnValue = false;
-
                     }
                     locals.sliding = true;
                 }
 
                 if ((base.newPosY > 10 || base.newPosY < -10) && locals.sliding === false) {
-                    $(document).off("touchmove.owl");
+                    $(document).off("touchmove.qg");
                 }
 
-				if ($(window).width() >= 768) {
-
+                if ($(window).width() >= 768) {
 	                if (base.browser.support3d === true) {
 	                    base.$qgWrapper.css(
 	                    	base.doTranslate(base.tempPositionDesc)
@@ -613,20 +602,20 @@ if (typeof Object.create !== "function") {
 	                } else {
 	                	base.$qgWrapper.css({
 		                    'left':  base.tempPositionDesc
-		                });
-	                }
+		                	});
+	                	}
 				} else {
-	                if (base.browser.support3d === true) {
+		            if (base.browser.support3d === true) {
 						base.$qgWrapper.css(
 							base.doTranslate(base.tempPositionTablets)
 							);
 	                } else {
 	                	base.$qgWrapper.css({
 		                    'left': base.tempPositionTablets
-		                });
-	                }
-				};
-            }
+		                	});
+	                	}
+					};
+            	}
 
             function dragEnd(event) {
              	var ev = event.originalEvent || event || window.event,
@@ -635,19 +624,32 @@ if (typeof Object.create !== "function") {
                     qgStopEvent;
 
                 ev.target = ev.target || ev.srcElement;
-
                 locals.dragging = false;
 
-                if (base.newRelativeX < 0) {
-                    base.dragDirection = locals.dragDirection = "left";
-                    console.log(base.dragDirection)
-                    base.next();
-                } else {
-                    base.dragDirection = locals.dragDirection = "right";
-                    console.log(base.dragDirection)
-                    base.prev();
-                }
-                swapEvents("off");
+                base.$qgWrapper.css(
+	            	base.addCssSpeed(base.options.slideSpeed)
+	            	)
+ 				if (base.newRelativeX !== 0) {
+
+	 				if (base.newRelativeX < 0) {
+	                    base.dragDirection = locals.dragDirection = "left";
+	                    base.next();
+	                } else {
+	                    base.dragDirection = locals.dragDirection = "right";
+	                    base.prev();
+	                }
+
+                    if (locals.targetElement === ev.target) {
+                        $(ev.target).on("click.disable", function (ev) {
+                            ev.preventDefault();
+                            $(ev.target).off("click.disable");
+                        });
+                        handlers = $.data(ev.target, "events").click;
+                        qgStopEvent = handlers.pop();
+                        handlers.splice(0, 0, qgStopEvent);
+                    }	
+            	}
+            	swapEvents("off");
             }
             base.$elem.on(base.ev_types.start, ".qg-wrapper", dragStart);
  		},
@@ -671,15 +673,8 @@ if (typeof Object.create !== "function") {
         navigationText : ["prev", "next"],
         slideSpeed : 1000,
 
-        responsive : true,
-        responsiveRefreshRate : 200,
-        responsiveBaseWidth : window,
-
-        mouseDrag : true,
+        mouseDrag : false,
         touchDrag : true,
-
-        addClassActive : false,
-        transitionStyle : false,
 
     };
 }(jQuery, window, document));

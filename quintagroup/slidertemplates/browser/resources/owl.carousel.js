@@ -998,6 +998,7 @@ if (typeof Object.create !== "function") {
                 } else {
                     base.css2move(base.newPosX);
                 }
+                console.log("move")
             }
 
             function dragEnd(event) {
