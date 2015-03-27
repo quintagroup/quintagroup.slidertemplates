@@ -46,12 +46,6 @@ if (typeof Object.create !== "function") {
             base.buildControls();
             base.response();
             base.moveEvents();
-            // base.stopOnHover();
-
-            // if (base.options.autoPlay === true) {
-            //     base.options.autoPlay = 5000;
-            // }
-            // base.play();
 
             base.$elem.find(".qg-wrapper").css("display", "block");
 
@@ -84,9 +78,6 @@ if (typeof Object.create !== "function") {
 
             base.resizer = function () {
                 if ($(window).width() !== lastWindowWidth) {
-            //         if (base.options.autoPlay !== false) {
-            //             window.clearInterval(base.autoPlayInterval);
-            //         }
                     window.clearTimeout(smallDelay);
                     smallDelay = window.setTimeout(function () {
                         lastWindowWidth = $(window).width();
@@ -101,7 +92,6 @@ if (typeof Object.create !== "function") {
             var base = this;
             if (base.$elem.is(":visible") === false) {
                 base.$elem.css({opacity: 0});
-                // window.clearInterval(base.autoPlayInterval);
                 window.clearInterval(base.checkVisible);
             } else {
                 return false;
@@ -200,8 +190,8 @@ if (typeof Object.create !== "function") {
             var base = this; 
 
             base.$widthWrapperOuter = base.$elem.width();
-            base.$itemWidth = base.$widthWrapperOuter / 5;
-            base.$imageWidth = base.$widthWrapperOuter * 0.375;   
+            base.$itemWidth = (base.$widthWrapperOuter - (base.options.columnGap*4)) / 5 + base.options.columnGap;
+            base.$imageWidth = base.$itemWidth * 2 - base.options.columnGap;
         },
 
         buildItem : function () {
@@ -219,7 +209,7 @@ if (typeof Object.create !== "function") {
 
                 base.$qgWrapper.css({
                     'width': base.$itemWidth * (base.itemsAmount+3),
-                    'height' : base.$imageWidth
+                    'height' : base.$itemWidth * 2
                     });
                 base.transitionItemDesc();
                 if (base.browser.support3d === true) {
@@ -380,11 +370,11 @@ if (typeof Object.create !== "function") {
 				'transition' : 'width'
                 });
             base.$qgItems.find(".image-block").css({
-                'width': base.$itemWidth-30,
-                'height': base.$itemWidth-30
+                'width': base.$itemWidth-base.options.columnGap,
+                'height': base.$itemWidth-base.options.columnGap
                 });
             base.$elem.find(".qg-item.active").css({
-                'width': base.$itemWidth*3,
+                'width': base.$itemWidth*3 - base.options.columnGap,
                 '-webkit-transition' : 'width',
 				'transition' : 'width'
                 });
@@ -450,8 +440,8 @@ if (typeof Object.create !== "function") {
                 'width': base.$itemWidth*3,
                 },600, "swing");
             base.$qgItems.find(".image-block").animate({
-                'width': base.$itemWidth-30,
-                'height': base.$itemWidth-30
+                'width': base.$itemWidth-base.options.columnGap,
+                'height': base.$itemWidth-base.options.columnGap
                 },600, "swing");
 
             base.$elem.find(".qg-item.active").find(".image-block").animate({
@@ -675,6 +665,7 @@ if (typeof Object.create !== "function") {
 
         mouseDrag : false,
         touchDrag : true,
+        columnGap : 30,
 
     };
 }(jQuery, window, document));
