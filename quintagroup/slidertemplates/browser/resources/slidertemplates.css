@@ -237,6 +237,11 @@ h2.resp-tab-title:last-child {
 .owl-carousel .owl-item img {
     margin-bottom: 0.5em;
     }
+.portletOWLCarousel .owl-item img {
+    height: auto;
+    max-width: 100%;
+    width: auto; /*fix to IE8*/
+    }
 .grabbing {
     cursor: move;
     }

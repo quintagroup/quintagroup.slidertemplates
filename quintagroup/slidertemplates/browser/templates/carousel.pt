@@ -21,7 +21,7 @@
              tal:attributes="href item/getURL">
             <tal:block condition="python:item.portal_type in ['Image', 'News Item']">
               <img tal:define="obj item/getObject;"
-                   tal:replace="structure obj/@@images/image/large|nothing" />
+                   tal:replace="structure obj/@@images/image|nothing" />
             </tal:block>
             <span class="carouselContent">
               <span class="itemBlock itemTitle"
