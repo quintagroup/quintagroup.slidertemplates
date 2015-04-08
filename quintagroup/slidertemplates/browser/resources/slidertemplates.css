@@ -378,7 +378,6 @@ h2.resp-tab-title:last-child {
     -webkit-background-size: cover;
     background-size: cover;
     background-color: #ddd;
-    margin: 0 15px 0 0;
     margin: 0  0 0 15px;
     }
 .bx-wrapper .pager-item .block-visual {
@@ -413,7 +412,6 @@ h2.resp-tab-title:last-child {
 .bx-pager {
     overflow: hidden;
     position: relative;
-    margin-left: -15px;
     margin-left: -45px;
     width: 10000000px;
     }
