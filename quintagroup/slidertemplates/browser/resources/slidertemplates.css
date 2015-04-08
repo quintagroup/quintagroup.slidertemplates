@@ -288,13 +288,12 @@ h2.resp-tab-title:last-child {
 
 /*---------- QG Carousel ----------*/
 .qg-carousel {
+    display: none;
     position: relative;
     width: 100%;
     }
 .qg-carousel .qg-wrapper {
     position: relative;
-    display: none;
-    overflow: hidden;
     }
 .qg-carousel .qg-wrapper:after {
     clear: both;
@@ -312,17 +311,18 @@ h2.resp-tab-title:last-child {
 .qg-carousel .qg-item {
     float: left;
     }
+.qg-carousel .qg-wrapper,
 .qg-carousel .image-block,
 .qg-carousel .item-visual,
 .qg-carousel .qg-item {
-    -webkit-transition: all 1s ease !important;
-    -moz-transition: all 1s ease !important;
-    -o-transition: all 1s ease !important;
-    transition: all 1s ease !important;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
     }
 .qg-item .item-visual {
     display: block;
-    margin: 0 0 1em 2em;
+    margin: 0 0 1em 30px;
     overflow: hidden;
     }
 .qg-item.active .item-visual {
@@ -369,13 +369,20 @@ h2.resp-tab-title:last-child {
     margin: 0 0 30px;
     position: relative;
     }
-.bx-wrapper .block-visual {
+.slider-wrapper-outer .block-visual {
     -webkit-background-size: cover;
     background-size: cover;
     background-color: #ddd;
     }
+.bx-wrapper .pager-item-visual {
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-color: #ddd;
+    margin: 0  0 0 15px;
+    }
 .bx-wrapper .pager-item .block-visual {
     cursor: pointer;
+    padding: 0 0 0 15px;
     }
 .bx-wrapper .itemBody {
     padding: 1em;
@@ -388,6 +395,7 @@ h2.resp-tab-title:last-child {
 
 /* Styling Next and Prev buttons */
 .bx-buttons {
+    bottom: 15px;
     left: 0;
     position: absolute;
     text-align: center;
@@ -404,14 +412,11 @@ h2.resp-tab-title:last-child {
 .bx-pager {
     overflow: hidden;
     position: relative;
+    margin-left: -45px;
     width: 10000000px;
     }
 .pager-item {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
     float: left;
-    margin-right: 30px;
     position: relative;
     }
 
