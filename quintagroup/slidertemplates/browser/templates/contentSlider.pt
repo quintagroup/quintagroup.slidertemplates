@@ -56,6 +56,7 @@
         <div class="contentslider-controls">
           <div class="bx-pager">
             <div class="pager-item" tal:repeat="item view/results">
+            <div class="block-visual">
               <tal:block define="obj item/getObject">
                 <div tal:define="scales obj/@@images;
                                  thumbnail python: scales.scale('image', width=400, height=400);
@@ -63,8 +64,8 @@
                       tal:condition="python:item.portal_type in ['Image', 'News Item']"
                       tal:omit-tag="not:thumbnail"
                       tal:attributes="style string:background-image:url($img)"
-                      class="block-visual">
-                  <div tal:omit-tag="thumbnail" class="block-visual">
+                      class="pager-item-visual">
+                  <div tal:omit-tag="thumbnail" class="pager-item-visual">
                     <div class="itemBody">
                       <div class="itemBlock itemTitle"
                             tal:content="item/Title|item/getId|item/id">
@@ -81,10 +82,10 @@
                         Description
                       </div>
                     </div>
-
                   </div>
                 </div>
               </tal:block>
+            </div>
             </div>
           </div>
         </div>

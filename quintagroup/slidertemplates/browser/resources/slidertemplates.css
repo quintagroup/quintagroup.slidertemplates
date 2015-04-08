@@ -369,13 +369,21 @@ h2.resp-tab-title:last-child {
     margin: 0 0 30px;
     position: relative;
     }
-.bx-wrapper .block-visual {
+.slider-wrapper-outer .block-visual {
     -webkit-background-size: cover;
     background-size: cover;
     background-color: #ddd;
     }
+.bx-wrapper .pager-item-visual {
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-color: #ddd;
+    margin: 0 15px 0 0;
+    margin: 0  0 0 15px;
+    }
 .bx-wrapper .pager-item .block-visual {
     cursor: pointer;
+    padding: 0 0 0 15px;
     }
 .bx-wrapper .itemBody {
     padding: 1em;
@@ -388,6 +396,7 @@ h2.resp-tab-title:last-child {
 
 /* Styling Next and Prev buttons */
 .bx-buttons {
+    bottom: 15px;
     left: 0;
     position: absolute;
     text-align: center;
@@ -404,14 +413,12 @@ h2.resp-tab-title:last-child {
 .bx-pager {
     overflow: hidden;
     position: relative;
+    margin-left: -15px;
+    margin-left: -45px;
     width: 10000000px;
     }
 .pager-item {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
     float: left;
-    margin-right: 30px;
     position: relative;
     }
 
