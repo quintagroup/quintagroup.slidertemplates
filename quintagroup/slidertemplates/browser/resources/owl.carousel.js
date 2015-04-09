@@ -429,9 +429,9 @@ if (typeof Object.create !== "function") {
                 if ($(this).hasClass("owl-next")) {
                     base.next();
                     if (base.browser.support3d === true) {
-                        console.log("support")
+
                     } else {
-                        console.log("not support")
+   
                     }
                 } else {
                     base.prev();
@@ -998,7 +998,6 @@ if (typeof Object.create !== "function") {
                 } else {
                     base.css2move(base.newPosX);
                 }
-                console.log("move")
             }
 
             function dragEnd(event) {

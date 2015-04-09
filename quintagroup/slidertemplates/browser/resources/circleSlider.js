@@ -20,8 +20,6 @@ $.fn.contCarousel = function () {
 		var scrollPager = -pagerWidth*2;
 		var columnGap =  parseInt($('.pager-item').css('margin-right'));
 
-		console.log(columnGap)
-
 		base.find(".block-visual").css({'width':slideWidth,'height':slideWidth});
 		base.find(".pager-item > .block-visual ").css({'width':pagerWidth-columnGap/2,'height':pagerWidth-columnGap/2});
 		base.find(".slider-wrapper-outer").css({'height':slideWidth });
