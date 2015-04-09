@@ -18,13 +18,16 @@ $.fn.contCarousel = function () {
 		var pagerWidth = slideWidth/2;
 		var scrollSlider = -slideWidth;
 		var scrollPager = -pagerWidth*2;
+		var columnGap =  parseInt($('.pager-item').css('margin-right'));
+
+		console.log(columnGap)
 
 		base.find(".block-visual").css({'width':slideWidth,'height':slideWidth});
-		base.find(".pager-item > .block-visual ").css({'width':pagerWidth-15,'height':pagerWidth-15});
+		base.find(".pager-item > .block-visual ").css({'width':pagerWidth-columnGap/2,'height':pagerWidth-columnGap/2});
 		base.find(".slider-wrapper-outer").css({'height':slideWidth });
 		base.find(".bx-buttons").css({'top':slideWidth-45});
 		pagerWrap.css({'height':pagerWidth});
-		pagerWrap.css({'left':-pagerWidth-15})
+		pagerWrap.css({'left':-pagerWidth-columnGap/2})
 	}
 
 	nextLink.click(function(){
@@ -32,7 +35,8 @@ $.fn.contCarousel = function () {
 		var slideWidth = base.find(".slider-wrapper-outer").width();
 		var pagerWidth = slideWidth/2;
 		var scrollSlider = -slideWidth-30;
-		var scrollPager = (-pagerWidth-15)*2;
+		var columnGap =  parseInt($('.pager-item').css('margin-right'));
+		var scrollPager = (-pagerWidth-columnGap/2)*2;
 
 	   	if(!slideWrap.is(':animated')) {
 		    slideWrap.animate({'top': scrollSlider},500 , function(){
@@ -48,7 +52,7 @@ $.fn.contCarousel = function () {
 			      .find('.pager-item:first')
 			      .appendTo(pagerWrap)
 			      .parent()
-			      .css({'left': -pagerWidth-15});
+			      .css({'left': -pagerWidth-columnGap/2});
 			      });
 		   		}, 500);
 		   	}
@@ -59,7 +63,8 @@ $.fn.contCarousel = function () {
 		var slideWidth = base.find(".slider-wrapper-outer").width();
 		var pagerWidth = slideWidth/2;
 		var scrollSlider = -slideWidth;
-		var scrollPager = (-pagerWidth-15)*2;
+		var columnGap =  parseInt($('.pager-item').css('margin-right'));
+		var scrollPager = (-pagerWidth-columnGap/2)*2;
 
 	   if(!slideWrap.is(':animated')) {
 	   	pagerWrap
@@ -67,7 +72,7 @@ $.fn.contCarousel = function () {
 	     .find('.pager-item:last')
 	     .prependTo(pagerWrap)
 	     .parent()
-	     .animate({'left':-pagerWidth-15}, 500);
+	     .animate({'left':-pagerWidth-columnGap/2}, 500);
 	   	setTimeout(function(){
 		    slideWrap
 		     .css({'top': scrollSlider})
@@ -86,7 +91,8 @@ $.fn.contCarousel = function () {
 			var slideWidth = base.find(".slider-wrapper-outer").width();
 			var pagerWidth = slideWidth/2;
 			var scrollSlider = -slideWidth-30;
-			var scrollPager = (-pagerWidth-15)*2;
+			var columnGap =  parseInt($('.pager-item').css('margin-right'));
+			var scrollPager = (-pagerWidth-columnGap/2)*2;
 
 			if($(this).index()==1) {
 
@@ -104,7 +110,7 @@ $.fn.contCarousel = function () {
 					      .find('.pager-item:first')
 					      .appendTo(pagerWrap)
 					      .parent()
-					      .css({'left': -pagerWidth-15});
+					      .css({'left': -pagerWidth-columnGap/2});
 					      });
 				   		}, 500);
 				   	}
@@ -123,7 +129,7 @@ $.fn.contCarousel = function () {
 			      	  .find('.pager-item:first')
 			          .appendTo(pagerWrap)
 			          .parent()
-			          .css({'left': -pagerWidth-15});
+			          .css({'left': -pagerWidth-columnGap/2});
 			      	});
 
 				}
@@ -140,7 +146,7 @@ $.fn.contCarousel = function () {
 				      	  .find('.pager-item:first')
 				          .appendTo(pagerWrap)
 				          .parent()
-				          .css({'left': -pagerWidth-15});
+				          .css({'left': -pagerWidth-columnGap/2});
 				      	});
 				}, 400);
 			}

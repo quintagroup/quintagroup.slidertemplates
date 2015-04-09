@@ -211,7 +211,7 @@ if (typeof Object.create !== "function") {
 
                 base.$qgWrapper.css({
                     'width': base.$itemWidth * (base.itemsAmount+3),
-                    'height' : base.$itemWidth * 2
+                    'height' : base.$itemWidth * 2 + base.$columnGap
                     });
                 base.transitionItemDesc();
                 if (base.browser.support3d === true) {
