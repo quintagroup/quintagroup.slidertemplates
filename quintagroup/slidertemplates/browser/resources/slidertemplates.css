@@ -320,6 +320,9 @@ h2.resp-tab-title:last-child {
     -o-transition: all 1s ease !important;
     transition: all 1s ease !important;
     }
+dl.portlet.portletQgCarousel dd.portletItem {
+    padding: 1em 0;
+    }
 .qg-item .item-visual {
     display: block;
     margin: 0 0 1em 2em;

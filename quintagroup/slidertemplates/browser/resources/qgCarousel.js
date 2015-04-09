@@ -190,8 +190,10 @@ if (typeof Object.create !== "function") {
             var base = this; 
 
             base.$widthWrapperOuter = base.$elem.width();
-            base.$itemWidth = (base.$widthWrapperOuter - (base.options.columnGap*4)) / 5 + base.options.columnGap;
-            base.$imageWidth = base.$itemWidth * 2 - base.options.columnGap;
+            base.$columnGap = parseInt($('.qg-item:not(.active) .item-visual').css('margin-left'));
+            base.$columnWidth = (base.$widthWrapperOuter - base.$columnGap * 14)/15;
+            base.$itemWidth = (base.$columnGap + base.$columnWidth) * 3;
+            base.$imageWidth = base.$itemWidth * 2;
         },
 
         buildItem : function () {
@@ -370,11 +372,11 @@ if (typeof Object.create !== "function") {
 				'transition' : 'width'
                 });
             base.$qgItems.find(".image-block").css({
-                'width': base.$itemWidth-base.options.columnGap,
-                'height': base.$itemWidth-base.options.columnGap
+                'width': base.$itemWidth-base.$columnGap,
+                'height': base.$itemWidth-base.$columnGap
                 });
             base.$elem.find(".qg-item.active").css({
-                'width': base.$itemWidth*3 - base.options.columnGap,
+                'width': base.$itemWidth*3 - base.$columnGap,
                 '-webkit-transition' : 'width',
 				'transition' : 'width'
                 });
@@ -440,8 +442,8 @@ if (typeof Object.create !== "function") {
                 'width': base.$itemWidth*3,
                 },600, "swing");
             base.$qgItems.find(".image-block").animate({
-                'width': base.$itemWidth-base.options.columnGap,
-                'height': base.$itemWidth-base.options.columnGap
+                'width': base.$itemWidth-base.$columnGap,
+                'height': base.$itemWidth-base.$columnGap
                 },600, "swing");
 
             base.$elem.find(".qg-item.active").find(".image-block").animate({
@@ -665,7 +667,6 @@ if (typeof Object.create !== "function") {
 
         mouseDrag : false,
         touchDrag : true,
-        columnGap : 30,
 
     };
 }(jQuery, window, document));
