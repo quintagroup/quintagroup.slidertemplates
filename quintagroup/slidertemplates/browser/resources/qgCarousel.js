@@ -25,8 +25,6 @@ if (typeof Object.create !== "function") {
             base.wrapperWidth = 0;
             base.checkVisible = null;
             base.setVars();
-
-            console.log(base.options.column);
         },
 
         setVars : function () {

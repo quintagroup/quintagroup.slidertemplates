@@ -19,7 +19,6 @@ $.fn.contCarousel = function () {
 		var scrollSlider = -slideWidth;
 		var scrollPager = -pagerWidth*2;
 		var columnGap =  parseInt($('.pager-item').css('margin-right'));
-
 		base.find(".block-visual").css({'width':slideWidth,'height':slideWidth});
 		base.find(".pager-item > .block-visual ").css({'width':pagerWidth-columnGap/2,'height':pagerWidth-columnGap/2});
 		base.find(".slider-wrapper-outer").css({'height':slideWidth });
@@ -32,8 +31,8 @@ $.fn.contCarousel = function () {
 
 		var slideWidth = base.find(".slider-wrapper-outer").width();
 		var pagerWidth = slideWidth/2;
-		var scrollSlider = -slideWidth-30;
 		var columnGap =  parseInt($('.pager-item').css('margin-right'));
+		var scrollSlider = -slideWidth-columnGap;
 		var scrollPager = (-pagerWidth-columnGap/2)*2;
 
 	   	if(!slideWrap.is(':animated')) {
@@ -66,13 +65,13 @@ $.fn.contCarousel = function () {
 
 	   if(!slideWrap.is(':animated')) {
 	   	pagerWrap
-	   	 .css({'left': scrollSlider-30})
+	   	 .css({'left': scrollSlider-columnGap})
 	     .find('.pager-item:last')
 	     .prependTo(pagerWrap)
 	     .parent()
 	     .animate({'left':-pagerWidth-columnGap/2}, 500);
 	   	setTimeout(function(){
-		    slideWrap
+			slideWrap
 		     .css({'top': scrollSlider})
 		     .find('.item:last')
 		     .prependTo(slideWrap)
@@ -88,8 +87,8 @@ $.fn.contCarousel = function () {
 
 			var slideWidth = base.find(".slider-wrapper-outer").width();
 			var pagerWidth = slideWidth/2;
-			var scrollSlider = -slideWidth-30;
 			var columnGap =  parseInt($('.pager-item').css('margin-right'));
+			var scrollSlider = -slideWidth-columnGap;
 			var scrollPager = (-pagerWidth-columnGap/2)*2;
 
 			if($(this).index()==1) {
