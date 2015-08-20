@@ -19,8 +19,12 @@
     }
 
 /* Tabs Navigations */
+
+ul.resp-tabs-list,
 #content ul.resp-tabs-list {
     margin-left: 0;
+    margin: 0;
+    padding: 0;
     }
 .resp-tabs-list li {
     border-color: transparent;
