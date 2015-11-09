@@ -12,6 +12,8 @@
 /*global dragMove: false, dragEnd: false, $, jQuery, alert, window, document */
 /*jslint nomen: true, continue:true */
 
+
+
 if (typeof Object.create !== "function") {
     Object.create = function (obj) {
         function F() {}
@@ -22,6 +24,7 @@ if (typeof Object.create !== "function") {
 (function ($, window, document) {
 
     var Carousel = {
+
         init : function (options, el) {
             var base = this;
 

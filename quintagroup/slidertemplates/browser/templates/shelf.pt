@@ -52,19 +52,19 @@
       </span>
       <span class="portletBottomRight"></span>
     </dd>
-
   </dl>
 
   <tal:x replace="structure string:&lt;script type='text/javascript'&gt;"></tal:x>
-    $(document).ready(function() {
-        $("#<tal:x replace='header'></tal:x>").owlCarousel({
-            itemsDesktop: [1199, 3],
-            itemsCustom: false,
-            items: 3,
-            navigation: true,
+    require(['jquery', '++plone++slidertemplates/js/owl_carousel'], function( $, Carousel){
+        $(document).ready(function() {
+            $("#<tal:x replace='header'></tal:x>").owlCarousel({
+                itemsDesktop: [1199, 3],
+                itemsCustom: false,
+                items: 3,
+                navigation: true,
+            });
         });
-    });
-    $("body").data("page", "frontpage");
+        $("body").data("page", "frontpage");
+      });
   <tal:x replace="structure string: &lt;/script&gt;" ></tal:x>
-
 </tal:portlet>

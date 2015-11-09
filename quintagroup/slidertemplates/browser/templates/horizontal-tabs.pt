@@ -69,20 +69,22 @@
   </dl>
 
   <tal:x replace="structure string:&lt;script type='text/javascript'&gt;"></tal:x>
-    $(document).ready(function() {
-        $("#<tal:x replace='header'></tal:x>").easyResponsiveTabs({
-            type: 'default',
-            width: 'auto',
-            fit: true,
-            closed: 'accordion',
-            activate: function(event) {
-                var $tab = $(this);
-                var $info = $('#tabInfo');
-                var $name = $('span', $info);
-                $name.text($tab.text());
-                $info.show();
-            }
-        });
+    require(['jquery', '++plone++slidertemplates/js/tabs'], function( $, tabs){
+      $(document).ready(function() {
+          $("#<tal:x replace='header'></tal:x>").easyResponsiveTabs({
+              type: 'default',
+              width: 'auto',
+              fit: true,
+              closed: 'accordion',
+              activate: function(event) {
+                  var $tab = $(this);
+                  var $info = $('#tabInfo');
+                  var $name = $('span', $info);
+                  $name.text($tab.text());
+                  $info.show();
+              }
+          });
+      });
     });
   <tal:x replace="structure string: &lt;/script&gt;" ></tal:x>
 

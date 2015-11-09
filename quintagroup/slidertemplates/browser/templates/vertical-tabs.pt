@@ -73,12 +73,14 @@
   </dl>
 
   <tal:x replace="structure string:&lt;script type='text/javascript'&gt;"></tal:x>
-    $(document).ready(function() {
-        $("#<tal:x replace='header'></tal:x>").easyResponsiveTabs({
-            type: 'vertical',
-            width: 'auto',
-            fit: true
-        });
+    require(['jquery', '++plone++slidertemplates/js/tabs' ], function( $, tabs) {
+      $(document).ready(function() {
+          $("#<tal:x replace='header'></tal:x>").easyResponsiveTabs({
+              type: 'vertical',
+              width: 'auto',
+              fit: true
+          });
+      });
     });
   <tal:x replace="structure string: &lt;/script&gt;" ></tal:x>
 

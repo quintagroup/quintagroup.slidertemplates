@@ -101,13 +101,8 @@
       </span>
       <span class="portletBottomRight"></span>
     </dd>
-
   </dl>
 
-  <tal:x replace="structure string:&lt;script type='text/javascript'&gt;"></tal:x>
-    $(document).ready(function() {
-        $("#<tal:x replace='header'></tal:x>").contCarousel();
-    });
-  <tal:x replace="structure string: &lt;/script&gt;" ></tal:x>
+  <tal:x replace="structure string:&lt;script type='text/javascript'&gt;"></tal:x>require(['jquery', '++plone++slidertemplates/js/circleCarousel'], function( $, circleCarousel){$(document).ready(function() {$("#<tal:x replace='header'></tal:x>").contCarousel();});});<tal:x replace="structure string: &lt;/script&gt;" ></tal:x>
 
 </tal:portlet>

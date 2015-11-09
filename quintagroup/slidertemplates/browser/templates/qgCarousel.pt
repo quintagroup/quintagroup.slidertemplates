@@ -60,16 +60,16 @@
       </span>
       <span class="portletBottomRight"></span>
     </dd>
-
   </dl>
 
   <tal:x replace="structure string:&lt;script type='text/javascript'&gt;"></tal:x>
-    $(document).ready(function() {
-        $("#<tal:x replace='header'></tal:x>").qgCarousel({
-          navigation: true,
-          navigationText : ["prev", "next"],
+    require(['jquery', '++plone++slidertemplates/js/qgCarousel'], function( $, qgCarousel){
+        $(document).ready(function() {
+            $("#<tal:x replace='header'></tal:x>").qgCarousel({
+              navigation: true,
+              navigationText : ["prev", "next"]
+            });
         });
-    });
+      });
   <tal:x replace="structure string: &lt;/script&gt;" ></tal:x>
-
 </tal:portlet>
