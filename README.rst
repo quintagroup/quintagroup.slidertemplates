@@ -23,3 +23,4 @@ Find more information at http://quintagroup.com/services/plone-development/produ
 Supported Plone versions:
 -------------------------
 Plone 4.3
+PLone 5.0
