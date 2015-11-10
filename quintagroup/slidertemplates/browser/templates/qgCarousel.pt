@@ -1,19 +1,17 @@
 <tal:portlet tal:define="headerfull view/data/header;
                          header python:headerfull.replace(' ', '')">
 
-  <dl class="portlet portletQgCarousel"
+  <section class="portlet portletQgCarousel"
        i18n:domain="plone"
        tal:define="collection_url view/collection_url">
 
-    <dt class="portletHeader">
-      <span class="portletTopLeft"></span>
+    <header class="portletHeader">
       <a tal:attributes="href collection_url" tal:omit-tag="not:view/data/show_more">
         <span tal:content="view/data/header" />
       </a>
-      <span class="portletTopRight"></span>
-    </dt>
+    </header>
 
-    <dd class="portletItem">
+    <section class="portletContent">
       <div tal:attributes="id header" class="qg-carousel">
           <div class="qg-item" tal:repeat="item view/results">
             <a href="#"
@@ -48,19 +46,16 @@
             </a>
           </div>
       </div>
-    </dd>
+    </section>
 
-    <dd class="portletFooter" tal:condition="view/data/show_more">
-      <span class="portletBottomLeft"></span>
-      <span>
-        <a tal:attributes="href collection_url"
-           tal:content="structure view/show_more_label">
-          More&hellip;
-        </a>
-      </span>
-      <span class="portletBottomRight"></span>
-    </dd>
-  </dl>
+    <footer class="portletFooter" tal:condition="view/data/show_more">
+      <a tal:attributes="href collection_url"
+         tal:content="structure view/show_more_label">
+        More&hellip;
+      </a>
+    </footer>
+
+  </section>
 
   <tal:x replace="structure string:&lt;script type='text/javascript'&gt;"></tal:x>
     require(['jquery', '++plone++slidertemplates/js/qgCarousel'], function( $, qgCarousel){
