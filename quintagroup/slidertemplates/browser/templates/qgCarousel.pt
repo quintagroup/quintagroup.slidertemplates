@@ -19,7 +19,7 @@
                tal:attributes="href item/getURL">
               <span tal:define="obj item/getObject;
                                 scales obj/@@images;
-                                thumbnail python: scales.scale('image', width=400, height=400);
+                                thumbnail python: scales.scale('image', scale='large');
                                 img thumbnail/url|nothing"
                     tal:condition="python:item.portal_type in ['Image', 'News Item']"
                     tal:omit-tag="not:thumbnail"
