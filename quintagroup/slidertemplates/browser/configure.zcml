@@ -6,10 +6,6 @@
     i18n_domain="quintagroup.slidertemplates">
 
   <!-- Register resources -->
-  <browser:resourceDirectory
-    name="quintagroup.theme.vane.templates"
-    directory="templates"
-    />
   <browser:resource
     name="slidertemplates.css"
     file="resources/slidertemplates.css"
