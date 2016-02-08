@@ -21,6 +21,7 @@
 /* Tabs Navigations */
 #content ul.resp-tabs-list {
     margin-left: 0;
+    list-style: none;
     }
 .resp-tabs-list li {
     border-color: transparent;
@@ -60,6 +61,8 @@ dl.portlet .portletHorizontalTab li.resp-tab-item {
 .resp-tab-content img {
     float: left;
     margin: 0 1em 1em 0;
+    max-width: 100%;
+    height: auto;
     }
 .resp-content-active,
 .resp-accordion-active {
@@ -453,6 +456,8 @@ dl.portletShelf dd.portletItem {
     }
 .portletShelf .item img {
     margin-bottom: 0.5em;
+    width: 100%;
+    height: auto;
     }
 .portletHorizontalTab .itemBlock,
 .portletVerticalTabs .itemBlock,

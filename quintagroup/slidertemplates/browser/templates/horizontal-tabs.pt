@@ -33,8 +33,10 @@
                class="tile"
                tal:attributes="href item/getURL">
               <tal:block condition="python:item.portal_type in ['Image', 'News Item']">
-                <img tal:define="obj item/getObject;"
-                     tal:replace="structure obj/@@images/image/mini|nothing" />
+                <img tal:define="obj item/getObject;
+                                 scales obj/@@images;
+                                 img python: scales.scale('image', width=400, height=400);"
+                     tal:replace="structure img" />
               </tal:block>
               <span class="itemBlock itemDate"
                     tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;

@@ -58,7 +58,7 @@
             <div class="pager-item" tal:repeat="item view/results">
               <tal:block define="obj item/getObject">
                 <div tal:define="scales obj/@@images;
-                                 thumbnail python: scales.scale('image', width=400, height=400);
+                                 thumbnail python: scales.scale('image', width=600, height=600);
                                  img thumbnail/url|nothing"
                       tal:condition="python:item.portal_type in ['Image', 'News Item']"
                       tal:omit-tag="not:thumbnail"

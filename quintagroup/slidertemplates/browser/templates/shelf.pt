@@ -17,8 +17,10 @@
       <div id="owl-demo" tal:attributes="id header" class="owl-carousel owl-theme">
         <div class="item" tal:repeat="item view/results">
           <tal:block condition="python:item.portal_type in ['Image', 'News Item']">
-            <img tal:define="obj item/getObject;"
-                 tal:replace="structure obj/@@images/image/preview|nothing" />
+            <img tal:define="obj item/getObject;
+                             scales obj/@@images;
+                             img python: scales.scale('image', width=1200, height=1200);"
+                 tal:replace="structure img" />
           </tal:block>
           <div class="mask"></div>
           <a class="itemBody" tal:attributes="href item/getURL">
